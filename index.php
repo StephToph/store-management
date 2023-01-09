@@ -2,14 +2,14 @@
 include "config.php";
 session_start();
 if (isset($_SESSION['User_id'])) {
-    header("location:home.php");    
-     die();
+    header("location:home.php");
+    die();
 }
 
 if (isset($_POST['submit'])) {
-   
+
     $firstname = $_POST['firstname'];
-    $password = $_POST['password'];
+    $password = md5($_POST['password']);
     $sql = "SELECT * FROM users where firstname = '" . $firstname . "' && password = '" . $password . "' ";
     $result = mysqli_query($conn, $sql);
     $num = mysqli_num_rows($result);
@@ -19,8 +19,7 @@ if (isset($_POST['submit'])) {
         $_SESSION['User_id'] = $row['id'];
         $_SESSION['Username'] = $row['firstname'];
         header("Location:home.php");
-        print_r($_SESSION['User_id']);
-    } else {
+           } else {
         header("Location:index.php?error= enter valid details ");
     }
 }
@@ -60,7 +59,9 @@ if (isset($_POST['submit'])) {
                                 everything hopped up.</p>
                         </div>
                         <div class="d-flex justify-content-between">
-                            <span class="text-white">© </span>
+                            <span class="text-white">©<?php
+                             echo date('Y'); 
+                            ?> </span>
 
                         </div>
                     </div>
@@ -121,8 +122,8 @@ if (isset($_POST['submit'])) {
 
     <!-- Core JS -->
     <script src="assets/js/app.min.js"></script>
- 
-?>
+
+    ?>
 
 </body>
 
