@@ -73,6 +73,11 @@ if (isset($_POST['submit'])) {
                             <div class="col-md-8 col-lg-7 col-xl-6 mx-auto">
                                 <h2>Sign In</h2>
                                 <p class="m-b-30">Enter your credential to get access</p>
+                                <?php if (isset($_GET['error'])) { ?>
+                                        <div class="alert alert-warning w-50" role="alert">
+                                            <?php echo $_GET['error'] ?>
+                                        </div>
+                                    <?php } ?>
                                 <form action="" method="post">
                                     <div class="form-group">
                                         <label class="font-weight-semibold" for="userName">Username:</label>
@@ -101,11 +106,7 @@ if (isset($_POST['submit'])) {
                                         </div>
                                     </div>
 
-                                    <?php if (isset($_GET['error'])) { ?>
-                                        <div class="alert alert-warning w-50" role="alert">
-                                            <?php echo $_GET['error'] ?>
-                                        </div>
-                                    <?php } ?>
+                                  
                                 </form>
                             </div>
                         </div>
@@ -123,7 +124,7 @@ if (isset($_POST['submit'])) {
     <!-- Core JS -->
     <script src="assets/js/app.min.js"></script>
 
-    ?>
+  
 
 </body>
 
