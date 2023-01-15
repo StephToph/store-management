@@ -11,9 +11,9 @@ include "header.php"
                         <h2 class="header-title">Profile</h2>
                         <div class="header-sub-title">
                             <nav class="breadcrumb breadcrumb-dash">
-                                <a href="#" class="breadcrumb-item"><i class="anticon anticon-home m-r-5"></i>Home</a>
-                                <a class="breadcrumb-item" href="#">Pages</a>
-                                <span class="breadcrumb-item active">Profile</span>
+                                <a href="home.php" class="breadcrumb-item"><i class="anticon anticon-home m-r-5"></i>Home</a>
+                               
+                                <span class="breadcrumb-item active anticon  anticon-profile">Profile</span>
                             </nav>
                         </div>
                     </div>

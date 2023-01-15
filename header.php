@@ -8,6 +8,7 @@ if (!isset($_SESSION['User_id'])) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -22,7 +23,10 @@ if (!isset($_SESSION['User_id'])) {
     <!-- Core css -->
     <link href="assets/css/app.min.css" rel="stylesheet">
 
+    <link href="assets/vendors/select2/select2.css" rel="stylesheet">
+
 </head>
+
 <body>
     <div class="app">
         <div class="layout">
@@ -31,7 +35,8 @@ if (!isset($_SESSION['User_id'])) {
                 <div class="logo logo-dark">
                     <a href="index.php">
                         <div class="text-center">
-                            <h1 style="color: blue; font-weight: 900;  font-size: 110%;width:inherit;padding-top:10%;">Testimony Poly</h1>
+                            <h1 style="color: blue; font-weight: 900;  font-size: 110%;width:inherit;padding-top:10%;">
+                                Testimony Poly</h1>
                         </div>
                     </a>
                 </div>
@@ -203,7 +208,7 @@ if (!isset($_SESSION['User_id'])) {
                                 <span class="arrow">
                                     <i class="arrow-icon"></i>
                                 </span>
-                            </a>                           
+                            </a>
                         </li>
                         <li class="nav-item ">
                             <a class="dropdown-toggle" href="category.php">
@@ -215,7 +220,7 @@ if (!isset($_SESSION['User_id'])) {
                                     <i class="arrow-icon"></i>
                                 </span>
                             </a>
-                          </li>
+                        </li>
                         <li class="nav-item ">
                             <a class="dropdown-toggle" href="product.php">
                                 <span class="icon-holder">
@@ -226,7 +231,7 @@ if (!isset($_SESSION['User_id'])) {
                                     <i class="arrow-icon"></i>
                                 </span>
                             </a>
-                         </li>
+                        </li>
                         <li class="nav-item ">
                             <a class="dropdown-toggle" href="javascript:void(0);">
                                 <span class="icon-holder">
@@ -234,9 +239,9 @@ if (!isset($_SESSION['User_id'])) {
                                 </span>
                                 <span class="title">Sales</span>
                                 <span class="arrow">
-                                    <i class="arrow-icon"></i>  
+                                    <i class="arrow-icon"></i>
                                 </span>
-                            </a>                           
+                            </a>
                         </li>
                         <li class="nav-item ">
                             <a class="dropdown-toggle" href="javascript:void(0);">
@@ -248,7 +253,7 @@ if (!isset($_SESSION['User_id'])) {
                                     <i class="arrow-icon"></i>
                                 </span>
                             </a>
-                            
+
                         </li>
                         <li class="nav-item ">
                             <a class="dropdown-toggle" href="">
@@ -260,7 +265,7 @@ if (!isset($_SESSION['User_id'])) {
                                     <i class="arrow-icon"></i>
                                 </span>
                             </a>
-                           
+
                         </li>
                         <li class="nav-item ">
                             <a class="dropdown-toggle" href="">
@@ -272,7 +277,7 @@ if (!isset($_SESSION['User_id'])) {
                                     <i class="arrow-icon"></i>
                                 </span>
                             </a>
-                           
+
                         </li>
                         <li class="nav-item ">
                             <a class="dropdown-toggle" href="profile.php">
@@ -284,7 +289,7 @@ if (!isset($_SESSION['User_id'])) {
                                     <i class="arrow-icon"></i>
                                 </span>
                             </a>
-                           
+
                         </li>
                         <li class="nav-item ">
                             <a class="dropdown-toggle" href="logout.php">
@@ -296,9 +301,9 @@ if (!isset($_SESSION['User_id'])) {
                                     <i class="arrow-icon"></i>
                                 </span>
                             </a>
-                           
+
                         </li>
-                          
+
                     </ul>
                 </div>
             </div>

@@ -2,20 +2,36 @@
 include "config.php";
 $id = $_POST['id'];
 
-$sql = "DELETE FROM product   WHERE id='$id'";
-$result = mysqli_query($conn, $sql);
+$sql = "SELECT * FROM product WHERE id=$id";
 
-$result = $conn->query($sql);
+  $result = $conn->query($sql);
 
-if ($result == true) {
-  $output = array("result" => 'success');
- 
-} else {
-  $output = array("result" => 'fail');
-  
+
+if ($result->num_rows > 0) {
+  while ($row = $result->fetch_assoc()) {
+    $files = $row['image'];
+    unlink($files);
+
+
+  }
 }
+    $sql = "DELETE FROM product   WHERE id='$id'";
+    $result = mysqli_query($conn, $sql);
 
-echo json_encode($output);
+    $result = $conn->query($sql);
+
+    if ($result == true) {
+      $output = array("result" => 'success');
+
+    } else {
+      $output = array("result" => 'fail');
+
+    }
+
+ 
+  
+  echo json_encode($output);
+
 
 
 ?>

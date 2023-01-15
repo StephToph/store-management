@@ -20,7 +20,8 @@ if (isset($_POST['submit'])) {
         $_SESSION['Username'] = $row['firstname'];
         header("Location:home.php");
            } else {
-        header("Location:index.php?error= enter valid details ");
+        header("Location:index.php?error=Incorrect details ");
+        
     }
 }
 ?>
@@ -50,13 +51,13 @@ if (isset($_POST['submit'])) {
                     style="background-image:url('assets/images/others/login-1.jpg')">
                     <div class="d-flex h-100 p-h-40 p-v-15 flex-column justify-content-between">
                         <div>
-                            <h1 style="color: white; font-weight: 900; font-size: 40px;">Testimony Poly</h1>
+                            <h1  style="color: white; font-weight: 900;  font-size: 40px;">Testimony Poly</h1>
                         </div>
                         <div>
                             <h1 class="text-white m-b-20 font-weight-normal">Exploring Testimony Poly</h1>
-                            <p class="text-white font-size-16 lh-2 w-80 opacity-08">Climb leg rub face on everything
+                            <!-- <p class="text-white font-size-16 lh-2 w-80 opacity-08">Climb leg rub face on everything
                                 give attitude nap all day for under the bed. Chase mice attack feet but rub face on
-                                everything hopped up.</p>
+                                everything hopped up.</p> -->
                         </div>
                         <div class="d-flex justify-content-between">
                             <span class="text-white">©<?php

@@ -19,33 +19,25 @@ include "header.php";
             <div class="card-body">
                 <div id="msg">
                 </div>
-                <button class="btn btn-secondary float-right m-t-35" data-toggle="modal" data-target="#addnew">Add
+                <button class="btn btn-secondary float-right m-t-35" id="add" data-toggle="modal"
+                    data-target="#addnew">Add
                     Product</button>
 
-                <div class="m-t-35">
-                    <table id="dtable" class="table">
+                <div class="m-t-35 table">
+                    <table id="dtable" class="table table-hover">
                         <thead>
                             <tr>
-                                <th>Id</th>
-                                <th>Category Name:</th>
+                                <th>Image</th>
+
                                 <th>Name:</th>
                                 <th>Description</th>
-                                <th>Image</th>
-                                <th>Reg_date</th>
+                                <th>Category Name:</th>
                                 <th style="text-align:right;">Option</th>
                             </tr>
                         </thead>
 
                         <tfoot>
-                            <tr>
-                                <th>Id</th>
-                                <th>Category Name:</th>
-                                <th>Name:</th>
-                                <th>Description</th>
-                                <th>Image</th>
-                                <th>Reg_date</th>
-                                <th style="text-align:right;">Option</th>
-                            </tr>
+
                         </tfoot>
                     </table>
 
@@ -68,12 +60,12 @@ include "header.php";
 
                             <div class="form-group">
                                 <p style=" font-weight: 500;">Product_Name:</p>
-                                <input type="text" name="pname" id="name" placeholder="name" class="form-control"
+                                <input type="text" name="pnames" id="name" placeholder="name" class="form-control"
                                     required>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group m-b-15">
                                 <p style=" font-weight: 500;">Category Name:</p>
-                                <select id='cate' name="pcate" class="form-control">
+                                <select id='cate' name="pcates" class="form-control select2">
                                     <?php
                                     $sql = "SELECT * FROM category";
                                     if ($result = mysqli_query($conn, $sql)) {
@@ -89,16 +81,16 @@ include "header.php";
                             </div>
                             <div class="form-group">
                                 <p style=" font-weight: 500;">Description</p>
-                                <input type="text" name="desc" id="desc" placeholder="name" class="form-control"
+                                <input type="text" name="descs" id="desc" placeholder="name" class="form-control"
                                     required>
                             </div>
                             <figure>
                                 <img id="myimage"
-                                    style="width:auto; display: block;position:relative; max-width: 50%;margin:auto; object-fit:cover;object-position: top;">
+                                    style="width:auto; display: block;position:relative; max-width: 50%; margin:auto; object-fit:cover;object-position: top;">
                             </figure>
                             <div class="custom-file">
                                 <p style=" font-weight: 500;">image:</p>
-                                <input type="file" name="image" class="custom-file-input" id="customFile"
+                                <input type="file" name="images" accept="image/*" class="custom-file-input" required
                                     id="customFile">
                                 <label class="custom-file-label" for="customFile">Choose image</label>
                                 <!-- 
@@ -106,10 +98,7 @@ include "header.php";
                                     required> -->
                             </div>
                             <button type="submit" class="btn btn-primary  btn-block">ADD</button>
-
                         </form>
-
-
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default m-r-10" data-dismiss="modal">Close</button>
@@ -119,7 +108,7 @@ include "header.php";
         </div>
         <!-- add modal stop -->
         <!-- update modal start -->
-        <div class="modal fade" id="updatenew" tabindex="-1" aria-labelledby="mods" aria-hidden="true">
+        <div class="modal fade" id="updatenew">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -129,24 +118,24 @@ include "header.php";
                         </button>
                     </div>
                     <div class="modal-body">
-                        <div id="msg1"></div>
-                        <form enctype="multipart/form-data" id="myform">
+                        <div id="msg2"></div>
+                        <form enctype="multipart/form-data" id="myforms">
 
                             <div class="form-group">
                                 <p style=" font-weight: 500;">Product_Name:</p>
                                 <input type="text" name="pname" id="name" placeholder="name" class="form-control"
                                     required>
+                                <input type="hidden" id="id" name="pid" value="">
                             </div>
                             <div class="form-group">
                                 <p style=" font-weight: 500;">Category Name:</p>
-                                <select id='cate' name="pcate" class="form-control">
+                                <select name="pcate" class="form-control">
                                     <?php
                                     $sql = "SELECT * FROM category";
                                     if ($result = mysqli_query($conn, $sql)) {
                                         if (mysqli_num_rows($result) > 0) {
-                                            //print_r($result);
                                             while ($row = mysqli_fetch_assoc($result)) {
-                                                echo "<option value='" . $row['id'] . "'>" . $row['name'] . "</option>";
+                                                echo "<option id='cate' value='" . $row['id'] . "' name='pcate'>" . $row['name'] . "</option>";
                                             }
                                         }
                                     }
@@ -155,50 +144,82 @@ include "header.php";
                             </div>
                             <div class="form-group">
                                 <p style=" font-weight: 500;">Description</p>
-                                <input type="text" name="desc" id="desc" placeholder="name" class="form-control"
-                                    required>
+                                <input type="text" name="desc" id="desc" class="form-control" required>
                             </div>
                             <figure>
-                                <img id="myimage"
+                                <img id="myimages" name="myimages"
                                     style="width:auto; display: block;position:relative; max-width: 50%;margin:auto; object-fit:cover;object-position: top;">
                             </figure>
                             <div class="custom-file">
                                 <p style=" font-weight: 500;">image:</p>
-                                <input type="file" name="image" class="custom-file-input" id="customFile"
-                                    id="customFile">
-                                <label class="custom-file-label" for="customFile">Choose image</label>
+                                <input type="file" name="images" accept="image/*" class="custom-file-input im1"
+                                    id="customFiles">
+                                <label class="custom-file-label" for="customFiles">Choose image</label>
                                 <!-- 
                                 <input type="file" class="btn btn-secondary" name="image" 
                                     required> -->
                             </div>
-                            <button type="submit" class="btn btn-primary  btn-block">ADD</button>
+
+                            <button type="submit" class="btn btn-primary  btn-block">update</button>
 
                         </form>
                     </div>
-
-
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default m-r-10" data-dismiss="modal">Close</button>
-                        <button type="button" onclick="updatecat()" class="btn btn-primary">Update</button>
+
                     </div>
                 </div>
             </div>
         </div>
         <!-- update modal stop -->
+        <!-- delete modal start -->
+        <div class="modal fade" id="delete">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Delete</h5>
+                        <button type="button" class="close" data-dismiss="modal">
+                            <i class="anticon anticon-close"></i>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Are you sure</p>
+                        <button type="button" class="btn btn-danger Delete " style="float:right;"> <i
+                                    class="anticon anticon-delete"></i>delete</button>
+                    </div>
+                    <div class="modal-footer">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- delete modal stop -->
         <script src="https://code.jquery.com/jquery-3.6.3.js"
             integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
-        <!--  table scripts  start -->
+        <!--  table scripts  and function start -->
+        <script src="assets/vendors/select2/select2.min.js"></script>
         <script>
             let uploadbtn = document.getElementById("customFile");
             let myimage = document.getElementById("myimage");
+            let select = document.getElementById("cate");
             uploadbtn.onchange = () => {
                 let reader = new FileReader();
                 reader.readAsDataURL(uploadbtn.files[0]);
-
                 reader.onload = () => {
                     myimage.setAttribute("src", reader.result);
                 }
             }
+            let uploadbtn1 = document.getElementById("customFiles");
+            let myimages = document.getElementById("myimages");
+            uploadbtn1.onchange = () => {
+                let reader = new FileReader();
+                reader.readAsDataURL(uploadbtn1.files[0]);
+                reader.onload = () => {
+                    myimages.setAttribute("src", reader.result);
+                }
+            }
+
+
+
 
 
             $(document).ready(function () {
@@ -215,11 +236,11 @@ include "header.php";
                         method: "POST"
                     },
                     "fnCreate": function (nRow, aData, iDataIndex) {
-                        $(nRow).attr("id", aData[0]);
+                        $(nRow).attr("name", aData[0]);
                     }
                     ,
                     "columnDefs": [{
-                        "targets": [3, 4, 6],//not sort
+                        "targets": [0, 2, 4],//not sort
                         "orderable": false
                     }]
                 })
@@ -246,11 +267,11 @@ include "header.php";
                                 setTimeout(function () {
                                     $("#msg").html('');
                                 }, 5000);
+                                myimage.clear();
 
                             }
                             else {
-                                var toastHTML = '<span class="alert alert-warning alert-dismissible fade show">Category already exist</span><br><br>';
-                                $("#msg1").html(toastHTML);
+                                $("#msg1").html('<span class="alert alert-warning alert-dismissible fade show">Category already exist</span><br><br>');
                                 setTimeout(function () {
                                     $("#msg1").html('');
                                 }, 5000);
@@ -272,63 +293,64 @@ include "header.php";
 
 
 
-
             $(document).on('click', '#editbtn', function (event) {
                 var id = $(this).data('id');
-                var trid = $(this).closest('tr').attr('id');
                 $.ajax(
                     {
                         url: "get_single_product.php",
                         data: { id: id },
-                        type: "post",
+                        type: "GET",
                         success: function (data) {
                             var json = JSON.parse(data);
-                            $('#id').val(json.id);
-                            $('#trid').val(trid);
-                            $('#name').val(json.name);
-                            $('#pcate').val(json.cat_name);
-                            $('#desc').val(json.description);
-                            $('#myimage').attr("src", json.image);
-                            $('#Date').attr("value", json.date);
-                            // $('#Date').val(json.date); 
                             $('#updatenew').modal('show');
+                            $("input[name='pid']").val(json.id);
+                            $("input[name='pname']").val(json.name);
+                            $("input[name='desc']").val(json.description);
+                            // $("input[name='pcate']").val(json.cat_name); 
+                            myimages.setAttribute("src", json.image);
+                            select.setAttribute("value", json.cat_name);
                         }
                     }
                 )
             });
-            function updatecat() {
-                var id = $('#id').val();
-                var trid = $('#trid');
-                var name = $('#uname').val();
+            $(document).ready(function () {
+                $('#myforms').on('submit', function (event) {
+                    event.preventDefault();
+                    $.ajax({
+                        type: 'post',
+                        url: "product_update.php",
+                        data: new FormData(this),
+                        dataType: "json",
+                        contentType: false,
+                        processData: false,
+                        cache: false,
+                        success: function (data) {
+                            if (data == 'success') {
+                                $('.modal').each(function () {
+                                    $(this).modal('hide');
+                                });
+                                $('#dtable').DataTable().ajax.reload();
+                                $("#msg").html('<span class="alert alert-success">Category is updated Successfully</span><br><br>');
+                                setTimeout(function () {
+                                    $("#msg").html('');
+                                }, 5000);
 
-                $.ajax({
-                    url: "product_update.php",
-                    data: { id: id, nameup: name },
-                    type: "post",
-                    success: function (data) {
-                        var d = JSON.parse(data);
-                        if (d.result == 'success') {
-                            $('#dtable').DataTable().ajax.reload();
-                            $("#uname").val('');
-                            $('.modal').each(function () {
-                                $(this).modal('hide');
-                            });
-                            $("#msg").html('<span class="alert alert-success">Category is updated Successfully</span><br><br>');
-                            $('#msg').toast('show');
+                            }
+                            else {
+                                $("#msg2").html('<span class="alert alert-warning alert-dismissible fade show">Category is already exist</span><br><br>');
+                                setTimeout(function () {
+                                    $("#msg2").html('');
+                                }, 5000);
+                            }
                         }
-                        else {
-                            $("#name").val('');
-                            $('#dtable').DataTable().ajax.reload();
-                            $("#msg2").html('<span class="alert alert-warning alert-dismissible fade show">Category is already exist</span><br><br>');
-                            $('#msg2').toast('show');
-                        }
-                    }
-                }
-                );
-            };
+                    });
+                })
+            });
             $(document).on('click', '.btnDelete', function (event) {
+                $('#delete').modal('show');
                 var id = $(this).data('id');
-                if (confirm("Are you sure you want to delete this  Category ")) {
+                $(document).on('click', '.Delete', function (event) {
+                    event.preventDefault();
                     $.ajax(
                         {
                             url: "product_delete.php",
@@ -342,17 +364,21 @@ include "header.php";
                                         $(this).modal('hide');
                                     });
                                     $("#msg").html('<span class="alert alert-success">Product deleted Successfully</span><br><br>');
-                                    $('#msg').toast('show');
+                                    setTimeout(function () {
+                                        $("#msg").html('');
+                                    }, 5000);
                                 }
                                 else {
                                     $('#dtable').DataTable().ajax.reload();
                                     $("#msg").html('<span class="alert alert-warnin">product not deleted</span><br><br>');
-                                    $('#msg').toast('show');
+                                    setTimeout(function () {
+                                        $("#msg").html('');
+                                    }, 5000);
                                 }
                             }
                         }
                     )
-                }
+                });
             });
         </script>
         <!--table scripts stop  -->

@@ -33,11 +33,7 @@ include "header.php";
                         </thead>
                         <tbody id="datatable"></tbody>
                         <tfoot>
-                            <tr>
-                                <th>Id</th>
-                                <th>Name</th>
-                                <th style="text-align:right;">Option</th>
-                            </tr>
+
                         </tfoot>
                     </table>
 
@@ -102,6 +98,27 @@ include "header.php";
             </div>
         </div>
         <!-- update modal stop -->
+          <!-- delete modal start -->
+          <div class="modal fade" id="delete">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Delete</h5>
+                        <button type="button" class="close" data-dismiss="modal">
+                            <i class="anticon anticon-close"></i>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Are you sure</p>
+                        <button type="button" class="btn btn-danger Delete " style="float:right;"> <i
+                                    class="anticon anticon-delete"></i>delete</button>
+                    </div>
+                    <div class="modal-footer">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- delete modal stop -->
         <script src="https://code.jquery.com/jquery-3.6.3.js"
             integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
         <!--  table scripts  start -->
@@ -175,9 +192,8 @@ include "header.php";
                         type: "post",
                         success: function (data) {
                             var json = JSON.parse(data);
-                            $('#id').val(json.id);
-                            $('#trid').val(trid);
-                            $('#uname').val(json.name);
+                            $('#id').val(json.id);                         
+                            $('#pname').val(json.name);
                             $('#updatenew').modal('show');
                         }
                     }
@@ -218,8 +234,10 @@ include "header.php";
                 );
             };
             $(document).on('click', '.btnDelete', function (event) {
+                $('#delete').modal('show');
                 var id = $(this).data('id');
-                if (confirm("Are you sure you want to delete this  Category ")) {
+                $(document).on('click', '.Delete', function (event) {
+                    event.preventDefault();
                     $.ajax(
                         {
                             url: "delete.php",
@@ -250,6 +268,7 @@ include "header.php";
                         }
                     )
                 }
+                );
             });
         </script>
         <!--table scripts stop  -->
