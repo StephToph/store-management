@@ -30,7 +30,7 @@ include "header.php";
                                 <th>Id:</th>
                                 <th>Product Name:</th>
                                 <th>brand:</th>                                
-                                <th>quantity:</th>
+                                <th>product variant:</th>
                                 <th>price</th>
                                 <th style="text-align:right;">Option:</th>
 
@@ -116,7 +116,7 @@ include "header.php";
                                 </select>
                             </div>
                             <div class="form-group">
-                                <p style=" font-weight: 500;">Quantity:</p>
+                                <p style=" font-weight: 500;">product variant:</p>
                                 <input type="text" name="quantity"  id="say" class="form-control"
                                     required>
                             </div>
@@ -167,7 +167,7 @@ include "header.php";
                                 </select>
                             </div>
                             <div class="form-group">
-                                <p style=" font-weight: 500;">Quantity:</p>
+                                <p style=" font-weight: 500;">product variant:</p>
                                 <input type="text" name="quantity"  id="say" class="form-control"
                                     required>
                             </div>

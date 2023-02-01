@@ -94,7 +94,7 @@ while ($row = mysqli_fetch_assoc($run_result)) {
     // }
 
     $sub_data[] = '	&#8358;' . number_format($row['total_price'], 2);
-
+    $sub_data[] = $row['reg_date'];
     $data[] = $sub_data;
 }
 

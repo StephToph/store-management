@@ -101,8 +101,9 @@ while ($row = mysqli_fetch_assoc($run_result)) {
         }
         $sad = $sun;
     }
+    
     $sub_data[] = $sad;
-
+    $sub_data[] = $row['date'];
     $sub_data[] = '<div><a href="javascript:void()"  id="editbtn"  data-id="' . $row['id'] . '"   class="text-primary"> <i class="anticon anticon-edit "></i>Edit</a></div>';
 
     $data[] = $sub_data;

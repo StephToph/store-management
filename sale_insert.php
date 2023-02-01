@@ -64,7 +64,7 @@ if (isset($_POST['pname'])) {
                         
                     }
                     if ($actq > $pared) {
-                        $output = 'fail';
+                        $output = 'fails';
                     } else {
                         $qunl = $pared - $actq;
                         $add = "0";
@@ -79,7 +79,7 @@ if (isset($_POST['pname'])) {
                                 $output = 'fail';
                             }
                         } else {
-                            $output = 'fail';
+                            $output = 'dams';
                         }
                     }
 

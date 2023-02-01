@@ -26,15 +26,10 @@ include "header.php";
                     <table id="dtable" class="table">
                         <thead>
                             <tr>
-                                <th>Id</th>
                                 <th>Name</th>
                                 <th style="text-align:right;">Option</th>
                             </tr>
-                        </thead>
-                        <tbody id="datatable"></tbody>
-                        <tfoot>
-
-                        </tfoot>
+                        </thead>                       
                     </table>
 
                 </div>
@@ -61,7 +56,8 @@ include "header.php";
 
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default btn-tone m-r-10" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-default btn-tone m-r-10"
+                            data-dismiss="modal">Close</button>
                         <button type="button" onclick="adduser()" class="btn btn-success btn-tone">ADD</button>
                     </div>
                 </div>
@@ -91,15 +87,16 @@ include "header.php";
 
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default btn-tone m-r-10" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-default btn-tone m-r-10"
+                            data-dismiss="modal">Close</button>
                         <button type="button" onclick="updatecat()" class="btn btn-primary btn-tone">Update</button>
                     </div>
                 </div>
             </div>
         </div>
         <!-- update modal stop -->
-          <!-- delete modal start -->
-          <div class="modal fade" id="delete">
+        <!-- delete modal start -->
+        <div class="modal fade" id="delete">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -111,7 +108,7 @@ include "header.php";
                     <div class="modal-body">
                         <p>Are you sure</p>
                         <button type="button" class="btn btn-danger btn-tone Delete " style="float:right;"> <i
-                                    class="anticon anticon-delete"></i>delete</button>
+                                class="anticon anticon-delete"></i>delete</button>
                     </div>
                     <div class="modal-footer">
                     </div>
@@ -122,7 +119,7 @@ include "header.php";
         <script src="assets\js\jquery-3.6.3.js"></script>
         <!--  table scripts  start -->
         <script>
-            $(document).ready(function(){
+            $(document).ready(function () {
                 get_data();
             });
             function get_data() {
@@ -140,7 +137,7 @@ include "header.php";
                     }
                     ,
                     "columnDefs": [{
-                        "targets": [2],//not sort
+                        "targets": [1],//not sort
                         "orderable": false
                     }]
                 })
@@ -152,8 +149,8 @@ include "header.php";
                         url: "insert.php",
                         type: 'post',
                         data: { nameSend: nameAdd },
-                        dataType: "json",                       
-                        success:function(data) {
+                        dataType: "json",
+                        success: function (data) {
                             if (data == 'success') {
                                 $("#name").val('');
                                 $('#dtable').DataTable().ajax.reload();
@@ -187,11 +184,11 @@ include "header.php";
                 $.ajax(
                     {
                         url: "get_single_user.php",
-                        data: {id:id},
+                        data: { id: id },
                         type: "post",
                         success: function (data) {
                             var json = JSON.parse(data);
-                            $('#id').val(json.id);                         
+                            $('#id').val(json.id);
                             $('#pname').val(json.name);
                             $('#updatenew').modal('show');
                         }

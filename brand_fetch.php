@@ -35,8 +35,7 @@ $data = array();
 $run_result = mysqli_query($conn, $query);
 
 while ($row = mysqli_fetch_assoc($run_result)) {
-    $sub_data = array();  
-    $sub_data[] = $row['id'];    
+    $sub_data = array();        
     $sub_data[] = $row['name'];   
     $sub_data[] = '<div align="right"><a href="javascript:void()"  id="editbtn"  data-id="' . $row['id'] . '"   class="text-primary"> <i class="anticon anticon-edit "></i>Edit</a>&nbsp;&nbsp;|<a href="javascript:void()" data-id="' . $row['id'] . '" class="text-danger btnDelete"> <i class="anticon anticon-delete"></i>Delete</a></div>';
 

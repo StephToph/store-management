@@ -67,10 +67,10 @@ if (!isset($_SESSION['User_id'])) {
                     </ul>
                     <ul class="nav-right">
                         <li class="dropdown dropdown-animated scale-left">
-                            <a href="javascript:void(0);" data-toggle="dropdown">
+                            <!-- <a href="javascript:void(0);" data-toggle="dropdown">
                                 <i class="anticon anticon-bell notification-badge"></i>
-                            </a>
-                            <div class="dropdown-menu pop-notification">
+                            </a> -->
+                            <!-- <div class="dropdown-menu pop-notification">
                                 <div
                                     class="p-v-15 p-h-25 border-bottom d-flex justify-content-between align-items-center">
                                     <p class="text-dark font-weight-semibold m-b-0">
@@ -129,7 +129,7 @@ if (!isset($_SESSION['User_id'])) {
                                         </a>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                         </li>
                         <li class="dropdown dropdown-animated scale-left">
                             <div class="pointer" data-toggle="dropdown">
@@ -148,34 +148,7 @@ if (!isset($_SESSION['User_id'])) {
                                             <p class="m-b-0 opacity-07">UI/UX Desinger</p>
                                         </div>
                                     </div>
-                                </div>
-                                <a href="javascript:void(0);" class="dropdown-item d-block p-h-15 p-v-10">
-                                    <div class="d-flex align-items-center justify-content-between">
-                                        <div>
-                                            <i class="anticon opacity-04 font-size-16 anticon-user"></i>
-                                            <span class="m-l-10">Edit Profile</span>
-                                        </div>
-                                        <i class="anticon font-size-10 anticon-right"></i>
-                                    </div>
-                                </a>
-                                <a href="javascript:void(0);" class="dropdown-item d-block p-h-15 p-v-10">
-                                    <div class="d-flex align-items-center justify-content-between">
-                                        <div>
-                                            <i class="anticon opacity-04 font-size-16 anticon-lock"></i>
-                                            <span class="m-l-10">Account Setting</span>
-                                        </div>
-                                        <i class="anticon font-size-10 anticon-right"></i>
-                                    </div>
-                                </a>
-                                <a href="javascript:void(0);" class="dropdown-item d-block p-h-15 p-v-10">
-                                    <div class="d-flex align-items-center justify-content-between">
-                                        <div>
-                                            <i class="anticon opacity-04 font-size-16 anticon-project"></i>
-                                            <span class="m-l-10">Projects</span>
-                                        </div>
-                                        <i class="anticon font-size-10 anticon-right"></i>
-                                    </div>
-                                </a>
+                                </div>                                
                                 <a href="logout.php" class="dropdown-item d-block p-h-15 p-v-10">
                                     <div class="d-flex align-items-center justify-content-between">
                                         <div>

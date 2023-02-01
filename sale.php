@@ -19,8 +19,8 @@ include "header.php";
             <div class="card-body">
                 <div id="msg">
                 </div>
-                <button class="btn btn-secondary btn-tone float-right m-t-35" id="add" data-toggle="modal" data-target="#addnew"
-                    onclick="nums();">Add sale</button>
+                <button class="btn btn-secondary btn-tone float-right m-t-35" id="add" data-toggle="modal"
+                    data-target="#addnew" onclick="nums();">Add sale</button>
 
                 <div class="m-t-35 table">
                     <table id="dtable" class="table table-hover">
@@ -30,8 +30,8 @@ include "header.php";
                                 <th>product name:</th>
                                 <th>price</th>
                                 <th>Quantity Sold</th>
-                                <th>total_price:</th>
-
+                                <th>total price:</th>
+                                <th>date sold:</th>
                             </tr>
                         </thead>
 
@@ -143,7 +143,11 @@ include "header.php";
                                     required>
                             </div>
                             <div class="form-group">
-                                <p style=" font-weight: 500;">Quantity</p>
+                                <p style=" font-weight: 500;">Quantity left:</p>
+                                <input type="text" id="wat" readonly class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <p style=" font-weight: 500;">Quantity sold</p>
                                 <input type="tel" name="quantity" oninput="add_number();" id="quantity"
                                     placeholder="Quantity_sold" class="form-control" required>
                             </div>
@@ -157,7 +161,8 @@ include "header.php";
                         <!-- <script>$('.select2').select2();</script> -->
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default btn-tone m-r-10" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-default btn-tone m-r-10"
+                            data-dismiss="modal">Close</button>
                     </div>
                 </div>
             </div>
@@ -222,8 +227,9 @@ include "header.php";
                     data: { val: val, sar: sar, vals: vals, dat: dat },
                     success: function (data) {
                         var json1 = JSON.parse(data);
-                        $("#say").val(json1);
-                        add_number();
+                        $("#say").val(json1.sam);
+                        $("#wat").val(json1.wat)
+                        // add_number();
                     }
                 })
             }
@@ -281,20 +287,34 @@ include "header.php";
                                 $('.modal').each(function () {
                                     $(this).modal('hide');
                                 });
-                                $("#msg").html('<span class="alert alert-success">sales is Added Successfully</span><br><br>');
+                                $("#msg").html('<span class="alert alert-success">   <i class="anticon anticon-info-circle"></i>sales is Added Successfully</span><br><br>');
                                 setTimeout(function () {
                                     $("#msg").html('');
                                 }, 5000);
                                 myimage.clear();
 
+                            } if (data == 'fails') {
+                                $("#msg1").html('<span class="alert alert-warning alert-dismissible fade show">  <i class="anticon anticon-close-circle"></i>quantity added is more than quantity in store </span><br><br>');
+                                // $('#wat').css("background-color","red","color","white");
+                                $('#wat').removeClass().addClass("alert alert-warning ");
+                                setTimeout(function () {
+                                    $("#msg1").html('');
+                                    $('#wat').removeClass().addClass("form-control")
+                                }, 5000);
                             }
-                            else {
-                                $("#msg1").html('<span class="alert alert-warning alert-dismissible fade show">please insert values fields </span><br><br>');
+                            if (data == 'dams') {
+                                $("#msg1").html('<span class="alert alert-warning alert-dismissible fade show"> <i class="anticon anticon-close-circle"></i>product is not in inventory </span><br><br>');
                                 setTimeout(function () {
                                     $("#msg1").html('');
                                 }, 5000);
-
                             }
+                            // else {
+                            //     $("#msg1").html('<span class="alert alert-warning alert-dismissible fade show">please insert values fields </span><br><br>');
+                            //     setTimeout(function () {
+                            //         $("#msg1").html('');
+                            //     }, 5000);
+
+                            // }
                         }
                     });
 

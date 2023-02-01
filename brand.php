@@ -19,14 +19,14 @@ include "header.php";
             <div class="card-body">
                 <div id="msg">
                 </div>
-                <button class="btn btn-secondary btn-tone float-right m-t-35" data-toggle="modal" data-target="#addnew">Add
+                <button class="btn btn-secondary btn-tone float-right m-t-35" data-toggle="modal"
+                    data-target="#addnew">Add
                     Brand</button>
 
                 <div class="m-t-35">
                     <table id="dtable" class="table">
                         <thead>
                             <tr>
-                                <th>Id</th>
                                 <th>Name</th>
                                 <th style="text-align:right;">Option</th>
                             </tr>
@@ -141,7 +141,7 @@ include "header.php";
                     $(nRow).attr("id", aData[0]);
                 },
                 "columnDefs": [{
-                    "targets": [2], //not sort
+                    "targets": [1], //not sort
                     "orderable": false,
                 }]
             })

@@ -27,16 +27,47 @@ if ($product != '') {
         $rowed = mysqli_fetch_assoc($rs);
         if ($rowed != '') {
             $pars = $rowed['id'];
-        
+
+
+        }
         $query1 = "SELECT * FROM variation where product_id ='$pars' and quantity='$qity' ";
         $rsy = mysqli_query($conn, $query1);
         $roweds = mysqli_fetch_assoc($rsy);
         if ($roweds != '') {
             $par = $roweds['price'];
         }
+
     }
-}}
-$row[] = $par;
+}
+$query1 = "SELECT current_quantity FROM inventory where product_id ='$pars' order by date DESC LIMIT 1 ";
+$rsy = mysqli_query($conn, $query1);
+$roweds = mysqli_fetch_assoc($rsy);
+$pared = $roweds['current_quantity'];
+$sad = $pared;
+$will = "SELECT * FROM setting where product_id ='$pars' ";
+$sql1 = mysqli_query($conn, $will);
+if (mysqli_num_rows($sql1) != 0) {
+    while ($row2 = mysqli_fetch_assoc($sql1)) {
+        $dis = $row2["bundle"];
+        if ($pared >= 10) {
+            $bill = $pared / $dis;
+            $sa = (int) $bill;
+            $esd = $bill - $sa;
+            $end = $esd * 10;
+            $sun = $sa . ' bag';
+            if ($end > 0) {
+                $sun = $sa . ' bag  ' . $end . ' bundle';
+            }
+        }
+        if ($pared < 10) {
+            $actq = $pared * 1;
+            $sun = $actq . 'bundle';
+        }
+    }
+    $sad = $sun;
+}
+$row['sam'] = $par;
+$row['wat'] = $sad;
 echo json_encode($row);
 
 

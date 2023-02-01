@@ -32,6 +32,7 @@ include "header.php";
                                 <th>Brand:</th>
                                 <th>category:</th>
                                 <th>Current Quantity:</th>
+                                <th>date:</th>
                                 <th>Option:</th>
 
                             </tr>
@@ -220,7 +221,7 @@ include "header.php";
                         $(nRow).attr("sale_id", aData[0]);
                     },
                     "columnDefs": [{
-                        "targets": [5], //not sort
+                        "targets": [6], //not sort
                         "orderable": false,
                     }]
                 })
