@@ -144,7 +144,7 @@ include "header.php";
                             </div>
                             <div class="form-group">
                                 <p style=" font-weight: 500;">Quantity</p>
-                                <input type="number" name="quantity" oninput="add_number();" id="quantity"
+                                <input type="tel" name="quantity" oninput="add_number();" id="quantity"
                                     placeholder="Quantity_sold" class="form-control" required>
                             </div>
                             <div class="form-group">
@@ -170,8 +170,8 @@ include "header.php";
             $('.select2').select2();
             function add_number() {
                 document.getElementById("tprice").value = "0";
-                var first_number = parseInt(document.getElementById("quantity").value);
-                var second_number = parseInt(document.getElementById("say").value);
+                var first_number = parseFloat(document.getElementById("quantity").value);
+                var second_number = parseFloat(document.getElementById("say").value);
                 var result = first_number * second_number;
 
                 document.getElementById("tprice").value = result;

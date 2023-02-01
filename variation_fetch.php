@@ -49,11 +49,19 @@ while ($row = mysqli_fetch_assoc($run_result)) {
 
         while ($rows = mysqli_fetch_assoc($result)) {
            $cat= $rows['name'];
+           $sat= $rows['brand_id'];
         }
     } 
-   
-
-    $sub_data[] =$cat;   
+   if($sat != "" ){
+    $query = "SELECT * FROM brand WHERE id='$sat' ";
+    $result = mysqli_query($conn, $query);
+    while ($rows = mysqli_fetch_assoc($result)) {
+        $mat= $rows['name'];
+        
+     }
+   }
+    $sub_data[] =$cat;
+    $sub_data[] = $mat;
     $sub_data[] =$row['quantity'];
     $sub_data[] = $row['price'];
    

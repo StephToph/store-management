@@ -29,6 +29,7 @@ include "header.php";
                             <tr>
                                 <th>Id:</th>
                                 <th>Product Name:</th>
+                                <th>brand:</th>                                
                                 <th>quantity:</th>
                                 <th>price</th>
                                 <th style="text-align:right;">Option:</th>
@@ -209,7 +210,7 @@ include "header.php";
                         $(nRow).attr("id", aData[0]);
                     },
                     "columnDefs": [{
-                        "targets": [4], //not sort
+                        "targets": [5], //not sort
                         "orderable": false,
                     }]
                 })

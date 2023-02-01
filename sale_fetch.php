@@ -12,7 +12,7 @@ $count_all_rows = mysqli_num_rows($result);
 if (isset($_POST['search']['value'])) {
     $search_value = $_POST['search']['value'];
     $query .= " WHERE sale_id like '%" . $search_value . "%' ";
-    $query .= " OR id like '%" . $search_value . "%' ";
+    $query .= " OR product_id like '%" . $search_value . "%' ";
     $query .= " OR prices like '%" . $search_value . "%' ";
     $query .= " OR total_price like '%" . $search_value . "%' ";
     $query .= " OR quantity like '%" . $search_value . "%' ";
