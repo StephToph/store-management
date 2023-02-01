@@ -57,7 +57,7 @@ if (isset($_POST['pname'])) {
 
                 }
 
-                $sql2 = "SELECT current_quantity FROM inventory where product_id ='$pars' order by id DESC LIMIT 1 ";
+                $sql2 = "SELECT current_quantity FROM inventory where product_id ='$pars' order by date DESC LIMIT 1 ";
                 if ($reserve = mysqli_query($conn, $sql2)) {
                     while ($roweds = mysqli_fetch_assoc($reserve)) {
                         $pared = $roweds['current_quantity'];
@@ -68,7 +68,7 @@ if (isset($_POST['pname'])) {
                     } else {
                         $qunl = $pared - $actq;
                         $add = "0";
-                        $sql2 = "UPDATE  inventory set quantity_left ='$qunl', quantity_add ='$add', current_quantity='$qunl' WHERE product_id='$pars'";
+                        $sql2 = "UPDATE  inventory set quantity_left ='$qunl', quantity_add ='$add', current_quantity='$qunl' WHERE current_quantity='$pared'";
                         $run = mysqli_query($conn, $sql2);
                         if ($run == true) {
                             $sql = " INSERT INTO sales (sale_id,product_id,prices,quantity,total_price,reg_date) values ('$sale','$pars', '$price', '$actq', '$tprice','$date')";
