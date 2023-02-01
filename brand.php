@@ -111,7 +111,7 @@ include "header.php";
                 </div>
                 <div class="modal-body">
                     <p>Are you sure</p>
-                    <button type="button" class="btn btn-danger btn-tone " style="float:right;"> <i
+                    <button type="button" class="btn btn-danger Delete btn-tone " style="float:right;"> <i
                             class="anticon anticon-delete"></i>delete</button>
                 </div>
                 <div class="modal-footer">
