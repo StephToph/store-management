@@ -13,40 +13,44 @@ if (isset($_POST['pname'])) {
             $nameSend = $_POST['pname'];
             $cateSend = $_POST['pcate'];
             $descSend = $_POST['desc'];
-            $imageSend = $_FILES['images'];
+            $price = $_POST['price'];
+            $band = $_POST['yes'];
+            // $imageSend = $_FILES['image'];
 
 
             // $date = date('Y-m-d H:i:s');
 
 
-            if (($_FILES['images']['name']) && ($_FILES['images']['name'] != "")) {
+            if (isset($_FILES['image']['name']) && ($_FILES['image']['name'] != "")) {
 
-                $filename = $_FILES['images']['name'];
-                $fileTmpname = $_FILES['images']['tmp_name'];
+                $filename = $_FILES['image']['name'];
+                $fileTmpname = $_FILES['image']['tmp_name'];
 
+                $fileExt = explode('.', $filename);
+                $fileActualExt = strtolower(end($fileExt));
+                $allowed = array('jpg', 'jpeg', 'png');
+                $filenamenew = uniqid('', true) . "." . $fileActualExt;
+                $upload_images = 'upload/' . $filenamenew;
+                move_uploaded_file($fileTmpname, $upload_images);
+                unlink($file);
+                $sqls = "UPDATE product set name='$nameSend', cat_name='$cateSend', description='$descSend', image='$upload_images',brand_id='$band',price='$price'   WHERE id=$user_id ";
+
+                $results = mysqli_query($conn, $sqls);
+                if ($results == true) {
+                    $output = 'success';
+                } else {
+                    $output = 'fail';
+                }
 
             } else {
-                $filename = $file;
-
+                $sqls = "UPDATE product set name='$nameSend', cat_name='$cateSend', description='$descSend', brand_id='$band',price='$price'   WHERE id=$user_id ";
+                $results = mysqli_query($conn, $sqls);
+                if ($results == true) {
+                    $output = 'success';
+                } else {
+                    $output = 'fail';
+                }
             }
-            $fileExt = explode('.', $filename);
-            $fileActualExt = strtolower(end($fileExt));
-            $allowed = array('jpg', 'jpeg', 'png');
-            $filenamenew = uniqid('', true) . "." . $fileActualExt;
-            unlink($file);
-            $upload_images = 'upload/' . $filenamenew;
-            move_uploaded_file($fileTmpname, $upload_images);
-            $sqls = "UPDATE product set name='$nameSend', cat_name='$cateSend', description='$descSend', image='$upload_images'   WHERE id=$user_id ";
-
-            $results = mysqli_query($conn, $sqls);
-            if ($results == true) {
-                $output = 'success';
-            } else {
-                $output = 'fail';
-            }
-
-
-
 
         }
 

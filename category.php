@@ -19,7 +19,7 @@ include "header.php";
             <div class="card-body">
                 <div id="msg">
                 </div>
-                <button class="btn btn-secondary float-right m-t-35" data-toggle="modal" data-target="#addnew"
+                <button class="btn btn-secondary btn-tone float-right m-t-35" data-toggle="modal" data-target="#addnew"
                     onclick="adduser()">Add Category</button>
 
                 <div class="m-t-35">
@@ -61,8 +61,8 @@ include "header.php";
 
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default m-r-10" data-dismiss="modal">Close</button>
-                        <button type="button" onclick="adduser()" class="btn btn-success">ADD</button>
+                        <button type="button" class="btn btn-default btn-tone m-r-10" data-dismiss="modal">Close</button>
+                        <button type="button" onclick="adduser()" class="btn btn-success btn-tone">ADD</button>
                     </div>
                 </div>
             </div>
@@ -85,14 +85,14 @@ include "header.php";
                             <input type="hidden" id="id" name="id" value="">
                             <input type="hidden" id="trid" name="id" value="">
                             <p style=" font-weight: 500;">Name:</p>
-                            <input type="text" id="uname" placeholder="name" class="form-control" required>
+                            <input type="text" name="name" id="pname" placeholder="name" class="form-control" required>
                         </div>
 
 
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default m-r-10" data-dismiss="modal">Close</button>
-                        <button type="button" onclick="updatecat()" class="btn btn-primary">Update</button>
+                        <button type="button" class="btn btn-default btn-tone m-r-10" data-dismiss="modal">Close</button>
+                        <button type="button" onclick="updatecat()" class="btn btn-primary btn-tone">Update</button>
                     </div>
                 </div>
             </div>
@@ -110,7 +110,7 @@ include "header.php";
                     </div>
                     <div class="modal-body">
                         <p>Are you sure</p>
-                        <button type="button" class="btn btn-danger Delete " style="float:right;"> <i
+                        <button type="button" class="btn btn-danger btn-tone Delete " style="float:right;"> <i
                                     class="anticon anticon-delete"></i>delete</button>
                     </div>
                     <div class="modal-footer">
@@ -119,11 +119,10 @@ include "header.php";
             </div>
         </div>
         <!-- delete modal stop -->
-        <script src="https://code.jquery.com/jquery-3.6.3.js"
-            integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
+        <script src="assets\js\jquery-3.6.3.js"></script>
         <!--  table scripts  start -->
         <script>
-            $(document).ready(function () {
+            $(document).ready(function(){
                 get_data();
             });
             function get_data() {
@@ -188,7 +187,7 @@ include "header.php";
                 $.ajax(
                     {
                         url: "get_single_user.php",
-                        data: { id: id },
+                        data: {id:id},
                         type: "post",
                         success: function (data) {
                             var json = JSON.parse(data);
@@ -202,7 +201,7 @@ include "header.php";
             function updatecat() {
                 var id = $('#id').val();
                 var trid = $('#trid');
-                var name = $('#uname').val();
+                var name = $('#pname').val();
                 $.ajax({
                     url: "update.php",
                     data: { id: id, nameup: name },

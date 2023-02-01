@@ -6,6 +6,8 @@ if (isset($_POST['pnames'])) {
     $descSend = $_POST['descs'];
     $imageSend = $_FILES['images'];
     $date = date('Y-m-d H:i:s');
+    $brand=$_POST['tat'];
+    $price=$_POST['prices'];
 
 
     $filename = $_FILES['images']['name'];
@@ -15,17 +17,17 @@ if (isset($_POST['pnames'])) {
     $fileActualExt = strtolower(end($fileExt));
     $allowed = array('jpg', 'jpeg', 'png');
 
-    $check = "SELECT * FROM product WHERE name = '$nameSend' AND cat_name='$cateSend'";
+    $check = "SELECT * FROM product WHERE name='$nameSend' AND cat_name='$cateSend' AND brand_id='$brand'";
     $rs = mysqli_query($conn, $check);
     $data = mysqli_num_rows($rs);
     if ($data > 0) {
-        $output = 'fail';
+        $output = 'fs';
     } else {
         if (in_array($fileActualExt, $allowed)) {
             $filenamenew = uniqid('', true) . "." . $fileActualExt;
             $upload_images = 'upload/' . $filenamenew;
             move_uploaded_file($fileTmpname, $upload_images);
-            $sql = "INSERT INTO product (cat_name,name,description,image,Reg_date) values ('$cateSend', '$nameSend', '$descSend', '$upload_images', '$date')";
+            $sql = "INSERT INTO product (cat_name,name,description,image,Reg_date,brand_id,price) values ('$cateSend', '$nameSend', '$descSend', '$upload_images', '$date','$brand','$price')";
             $result = mysqli_query($conn, $sql);
 
             if ($result == true) {

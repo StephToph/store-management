@@ -19,7 +19,7 @@ include "header.php";
             <div class="card-body">
                 <div id="msg">
                 </div>
-                <button class="btn btn-secondary float-right m-t-35" id="add" data-toggle="modal"
+                <button class="btn btn-secondary btn-tone float-right m-t-35" id="add" data-toggle="modal"
                     data-target="#addnew">Add
                     Product</button>
 
@@ -32,6 +32,8 @@ include "header.php";
                                 <th>Name:</th>
                                 <th>Description</th>
                                 <th>Category Name:</th>
+                                <th>brand:</th>
+
                                 <th style="text-align:right;">Option</th>
                             </tr>
                         </thead>
@@ -46,7 +48,7 @@ include "header.php";
         </div>
         <!-- add modal start -->
         <div class="modal fade" id="addnew">
-            <div class="modal-dialog">
+            <div class="modal-dialog modal-dialog-scrollable">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title">Add New Product</h5>
@@ -65,9 +67,10 @@ include "header.php";
                             </div>
                             <div class="form-group m-b-15">
                                 <p style=" font-weight: 500;">Category Name:</p>
-                                <select id='cate' name="pcates" class="form-control select2">
+                                <select id="cate" name="pcates" class="form-control select2" onchange="testy();">
                                     <?php
                                     $sql = "SELECT * FROM category";
+                                    echo "<option></option>";
                                     if ($result = mysqli_query($conn, $sql)) {
                                         if (mysqli_num_rows($result) > 0) {
                                             //print_r($result);
@@ -80,10 +83,34 @@ include "header.php";
                                 </select>
                             </div>
                             <div class="form-group">
+                                <p style=" font-weight: 500;">Brand:</p>
+                                <select name="tat" id="tat" class="form-control">
+                                    <?php
+                                    $sql = "SELECT * FROM brand";
+                                    echo "<option></option>";
+                                    if ($result = mysqli_query($conn, $sql)) {
+                                        if (mysqli_num_rows($result) > 0) {
+                                            //print_r($result);
+                                            while ($row = mysqli_fetch_assoc($result)) {
+                                                echo "<option value='" . $row['id'] . "'>" . $row['name'] . "</option>";
+                                            }
+                                        }
+                                    }
+                                    ?>
+
+                                </select>
+                            </div>
+                            <div class="form-group">
                                 <p style=" font-weight: 500;">Description</p>
                                 <input type="text" name="descs" id="desc" placeholder="name" class="form-control"
                                     required>
                             </div>
+                            <div class="form-group">
+                                <p style=" font-weight: 500;">price</p>
+                                <input type="number" name="prices" id="prices" placeholder="name" class="form-control"
+                                    required>
+                            </div>
+
                             <figure>
                                 <img id="myimage"
                                     style="width:auto; display: block;position:relative; max-width: 50%; margin:auto; object-fit:cover;object-position: top;">
@@ -97,11 +124,11 @@ include "header.php";
                                 <input type="file" class="btn btn-secondary" name="image" 
                                     required> -->
                             </div>
-                            <button type="submit" class="btn btn-primary  btn-block">ADD</button>
+                            <button type="submit" class="btn btn-primary btn-tone  btn-block">ADD</button>
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default m-r-10" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-default btn-tone  m-r-10" data-dismiss="modal">Close</button>
                     </div>
                 </div>
             </div>
@@ -109,7 +136,7 @@ include "header.php";
         <!-- add modal stop -->
         <!-- update modal start -->
         <div class="modal fade" id="updatenew">
-            <div class="modal-dialog">
+            <div class="modal-dialog modal-dialog-scrollable">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="mods">update Product</h5>
@@ -129,22 +156,23 @@ include "header.php";
                             </div>
                             <div class="form-group">
                                 <p style=" font-weight: 500;">Category Name:</p>
-                                <select name="pcate" class="form-control">
-                                    <?php
-                                    $sql = "SELECT * FROM category";
-                                    if ($result = mysqli_query($conn, $sql)) {
-                                        if (mysqli_num_rows($result) > 0) {
-                                            while ($row = mysqli_fetch_assoc($result)) {
-                                                echo "<option id='cate' value='" . $row['id'] . "' name='pcate'>" . $row['name'] . "</option>";
-                                            }
-                                        }
-                                    }
-                                    ?>
+                                <select name="pcate" class="form-control" id="cat">
+
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <p style=" font-weight: 500;">Brand:</p>
+                                <select name="yes" id="yes" class="form-control">
                                 </select>
                             </div>
                             <div class="form-group">
                                 <p style=" font-weight: 500;">Description</p>
                                 <input type="text" name="desc" id="desc" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <p style=" font-weight: 500;">price</p>
+                                <input type="number" name="price" id="price" placeholder="name" class="form-control"
+                                    required>
                             </div>
                             <figure>
                                 <img id="myimages" name="myimages"
@@ -152,7 +180,7 @@ include "header.php";
                             </figure>
                             <div class="custom-file">
                                 <p style=" font-weight: 500;">image:</p>
-                                <input type="file" name="images" accept="image/*" class="custom-file-input im1"
+                                <input type="file" name="image" accept="image/*" class="custom-file-input im1"
                                     id="customFiles">
                                 <label class="custom-file-label" for="customFiles">Choose image</label>
                                 <!-- 
@@ -160,12 +188,12 @@ include "header.php";
                                     required> -->
                             </div>
 
-                            <button type="submit" class="btn btn-primary  btn-block">update</button>
+                            <button type="submit" class="btn btn-primary btn-tone  btn-block">update</button>
 
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default m-r-10" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-default btn-tone m-r-10" data-dismiss="modal">Close</button>
 
                     </div>
                 </div>
@@ -177,15 +205,15 @@ include "header.php";
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Delete</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Delete product</h5>
                         <button type="button" class="close" data-dismiss="modal">
                             <i class="anticon anticon-close"></i>
                         </button>
                     </div>
                     <div class="modal-body">
                         <p>Are you sure</p>
-                        <button type="button" class="btn btn-danger Delete " style="float:right;"> <i
-                                    class="anticon anticon-delete"></i>delete</button>
+                        <button type="button" class="btn btn-danger btn-tone Delete " style="float:right;"> <i
+                                class="anticon anticon-delete"></i>delete</button>
                     </div>
                     <div class="modal-footer">
                     </div>
@@ -193,14 +221,27 @@ include "header.php";
             </div>
         </div>
         <!-- delete modal stop -->
-        <script src="https://code.jquery.com/jquery-3.6.3.js"
-            integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
+        <script src="assets\js\jquery-3.6.3.js"></script>
         <!--  table scripts  and function start -->
         <script src="assets/vendors/select2/select2.min.js"></script>
         <script>
+
+            function testy() {
+                var val = document.getElementById("cate").value;
+                var vals = document.getElementById("cat").value;
+                val
+                $.ajax({
+                    type: "GET",
+                    url: "brandcate.php",
+                    data: { val: val },
+                    success: function (data) {
+                        var json1 = JSON.parse(data);
+                        $("#tat").html(json1);
+                    }
+                })
+            }
             let uploadbtn = document.getElementById("customFile");
             let myimage = document.getElementById("myimage");
-            let select = document.getElementById("cate");
             uploadbtn.onchange = () => {
                 let reader = new FileReader();
                 reader.readAsDataURL(uploadbtn.files[0]);
@@ -217,10 +258,6 @@ include "header.php";
                     myimages.setAttribute("src", reader.result);
                 }
             }
-
-
-
-
 
             $(document).ready(function () {
                 get_data();
@@ -240,7 +277,7 @@ include "header.php";
                     }
                     ,
                     "columnDefs": [{
-                        "targets": [0, 2, 4],//not sort
+                        "targets": [0, 2,5],//not sort
                         "orderable": false
                     }]
                 })
@@ -263,6 +300,7 @@ include "header.php";
                                 $('.modal').each(function () {
                                     $(this).modal('hide');
                                 });
+
                                 $("#msg").html('<span class="alert alert-success">Category is Added Successfully</span><br><br>');
                                 setTimeout(function () {
                                     $("#msg").html('');
@@ -306,9 +344,10 @@ include "header.php";
                             $("input[name='pid']").val(json.id);
                             $("input[name='pname']").val(json.name);
                             $("input[name='desc']").val(json.description);
-                            // $("input[name='pcate']").val(json.cat_name); 
+                            $("#cat").html(json.select);
+                            $("#yes").html(json.brand);
+                            $("input[name='price']").val(json.price);
                             myimages.setAttribute("src", json.image);
-                            select.setAttribute("value", json.cat_name);
                         }
                     }
                 )

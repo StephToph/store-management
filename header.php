@@ -12,7 +12,7 @@ if (!isset($_SESSION['User_id'])) {
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Testimony Poly homepage</title>
+    <title>Testimony Poly</title>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="assets/images/logo/favicon.png">
@@ -20,14 +20,15 @@ if (!isset($_SESSION['User_id'])) {
     <!-- page css -->
     <link href="assets/vendors/datatables/dataTables.bootstrap.min.css" rel="stylesheet">
 
+    <link href="assets/vendors/select2/select2.css" rel="stylesheet">
     <!-- Core css -->
     <link href="assets/css/app.min.css" rel="stylesheet">
 
-    <link href="assets/vendors/select2/select2.css" rel="stylesheet">
+
 
 </head>
 
-<body>
+<body class="text-capitalize font-weight-semibold">
     <div class="app">
         <div class="layout">
             <!-- Header START -->
@@ -213,7 +214,7 @@ if (!isset($_SESSION['User_id'])) {
                         <li class="nav-item ">
                             <a class="dropdown-toggle" href="category.php">
                                 <span class="icon-holder">
-                                    <i class="anticon anticon-sort-ascending"></i>
+                                    <i class="fas fa-th-large" style="font-weight: 900;"></i>
                                 </span>
                                 <span class="title">Category</span>
                                 <span class="arrow">
@@ -222,9 +223,20 @@ if (!isset($_SESSION['User_id'])) {
                             </a>
                         </li>
                         <li class="nav-item ">
+                            <a class="dropdown-toggle" href="brand.php">
+                                <span class="icon-holder">
+                                    <i class="fas fa-tags"></i>
+                                </span>
+                                <span class="title">brand</span>
+                                <span class="arrow">
+                                    <i class="arrow-icon"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li class="nav-item ">
                             <a class="dropdown-toggle" href="product.php">
                                 <span class="icon-holder">
-                                    <i class="anticon anticon-build"></i>
+                                    <i class=" fas fa-box"></i>
                                 </span>
                                 <span class="title">Product</span>
                                 <span class="arrow">
@@ -233,9 +245,9 @@ if (!isset($_SESSION['User_id'])) {
                             </a>
                         </li>
                         <li class="nav-item ">
-                            <a class="dropdown-toggle" href="javascript:void(0);">
+                            <a class="dropdown-toggle" href="sale.php">
                                 <span class="icon-holder">
-                                    <i class="anticon anticon-tags"></i>
+                                    <i class="fas fa-store-alt"></i>
                                 </span>
                                 <span class="title">Sales</span>
                                 <span class="arrow">
@@ -244,9 +256,9 @@ if (!isset($_SESSION['User_id'])) {
                             </a>
                         </li>
                         <li class="nav-item ">
-                            <a class="dropdown-toggle" href="javascript:void(0);">
+                            <a class="dropdown-toggle" href="inventory.php">
                                 <span class="icon-holder">
-                                    <i class="anticon anticon-form"></i>
+                                    <i class="fas fa-clipboard-list"></i>
                                 </span>
                                 <span class="title">Inventory</span>
                                 <span class="arrow">
@@ -255,6 +267,31 @@ if (!isset($_SESSION['User_id'])) {
                             </a>
 
                         </li>
+                        <li class="nav-item ">
+                            <a class="dropdown-toggle" href="variation.php">
+                                <span class="icon-holder">
+                                    <!-- <i class="fas fa-clipboard-list"></i> -->
+                                </span>
+                                <span class="title">variation</span>
+                                <span class="arrow">
+                                    <i class="arrow-icon"></i>
+                                </span>
+                            </a>
+
+                        </li>
+                        <li class="nav-item ">
+                            <a class="dropdown-toggle " href="Setting.php">
+                                <span class="icon-holder">
+                                <i class="anticon anticon-tool"></i>                                    
+                                </span>
+                                <span class="title">Setting</span>
+                                <span class="arrow">
+                                    <i class="arrow-icon"></i>
+                                </span>
+                            </a>
+
+                        </li>
+
                         <li class="nav-item ">
                             <a class="dropdown-toggle" href="">
                                 <span class="icon-holder">

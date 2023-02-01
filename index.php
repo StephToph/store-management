@@ -19,9 +19,9 @@ if (isset($_POST['submit'])) {
         $_SESSION['User_id'] = $row['id'];
         $_SESSION['Username'] = $row['firstname'];
         header("Location:home.php");
-           } else {
+    } else {
         header("Location:index.php?error=Incorrect details ");
-        
+
     }
 }
 ?>
@@ -51,7 +51,7 @@ if (isset($_POST['submit'])) {
                     style="background-image:url('assets/images/others/login-1.jpg')">
                     <div class="d-flex h-100 p-h-40 p-v-15 flex-column justify-content-between">
                         <div>
-                            <h1  style="color: white; font-weight: 900;  font-size: 40px;">Testimony Poly</h1>
+                            <h1 style="color: white; font-weight: 900;  font-size: 40px;">Testimony Poly</h1>
                         </div>
                         <div>
                             <h1 class="text-white m-b-20 font-weight-normal">Exploring Testimony Poly</h1>
@@ -61,7 +61,7 @@ if (isset($_POST['submit'])) {
                         </div>
                         <div class="d-flex justify-content-between">
                             <span class="text-white">©<?php
-                             echo date('Y'); 
+                            echo date('Y');
                             ?> </span>
 
                         </div>
@@ -75,10 +75,10 @@ if (isset($_POST['submit'])) {
                                 <h2>Sign In</h2>
                                 <p class="m-b-30">Enter your credential to get access</p>
                                 <?php if (isset($_GET['error'])) { ?>
-                                        <div class="alert alert-warning w-50" role="alert">
-                                            <?php echo $_GET['error'] ?>
-                                        </div>
-                                    <?php } ?>
+                                    <div id="msg1" class="alert alert-warning w-50" role="alert">
+                                        <?php echo $_GET['error'] ?>
+                                    </div>
+                                <?php } ?>
                                 <form action="" method="post">
                                     <div class="form-group">
                                         <label class="font-weight-semibold" for="userName">Username:</label>
@@ -107,7 +107,7 @@ if (isset($_POST['submit'])) {
                                         </div>
                                     </div>
 
-                                  
+
                                 </form>
                             </div>
                         </div>
@@ -124,8 +124,14 @@ if (isset($_POST['submit'])) {
 
     <!-- Core JS -->
     <script src="assets/js/app.min.js"></script>
+    <script>
+         $("#msg1").preventDefault();
+        setTimeout(function () {
+            $("#msg1").html('');
+        }, 5000);
+    </script>
 
-  
+
 
 </body>
 
