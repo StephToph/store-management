@@ -7,7 +7,7 @@ if (isset($_POST['pnames'])) {
     $imageSend = $_FILES['images'];
     $date = date('Y-m-d H:i:s');
     $brand=$_POST['tat'];
-    $price=$_POST['prices'];
+    
 
 
     $filename = $_FILES['images']['name'];
@@ -27,7 +27,7 @@ if (isset($_POST['pnames'])) {
             $filenamenew = uniqid('', true) . "." . $fileActualExt;
             $upload_images = 'upload/' . $filenamenew;
             move_uploaded_file($fileTmpname, $upload_images);
-            $sql = "INSERT INTO product (cat_name,name,description,image,Reg_date,brand_id,price) values ('$cateSend', '$nameSend', '$descSend', '$upload_images', '$date','$brand','$price')";
+            $sql = "INSERT INTO product (cat_name,name,description,image,Reg_date,brand_id) values ('$cateSend', '$nameSend', '$descSend', '$upload_images', '$date','$brand')";
             $result = mysqli_query($conn, $sql);
 
             if ($result == true) {

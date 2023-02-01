@@ -33,7 +33,7 @@ if (isset($_POST['pname'])) {
                 $upload_images = 'upload/' . $filenamenew;
                 move_uploaded_file($fileTmpname, $upload_images);
                 unlink($file);
-                $sqls = "UPDATE product set name='$nameSend', cat_name='$cateSend', description='$descSend', image='$upload_images',brand_id='$band',price='$price'   WHERE id=$user_id ";
+                $sqls = "UPDATE product set name='$nameSend', cat_name='$cateSend', description='$descSend', image='$upload_images',brand_id='$band'   WHERE id=$user_id ";
 
                 $results = mysqli_query($conn, $sqls);
                 if ($results == true) {
@@ -43,7 +43,7 @@ if (isset($_POST['pname'])) {
                 }
 
             } else {
-                $sqls = "UPDATE product set name='$nameSend', cat_name='$cateSend', description='$descSend', brand_id='$band',price='$price'   WHERE id=$user_id ";
+                $sqls = "UPDATE product set name='$nameSend', cat_name='$cateSend', description='$descSend', brand_id='$band'   WHERE id=$user_id ";
                 $results = mysqli_query($conn, $sqls);
                 if ($results == true) {
                     $output = 'success';

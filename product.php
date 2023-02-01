@@ -105,11 +105,11 @@ include "header.php";
                                 <input type="text" name="descs" id="desc" placeholder="name" class="form-control"
                                     required>
                             </div>
-                            <div class="form-group">
+                            <!-- <div class="form-group">
                                 <p style=" font-weight: 500;">price</p>
                                 <input type="number" name="prices" id="prices" placeholder="name" class="form-control"
                                     required>
-                            </div>
+                            </div> -->
 
                             <figure>
                                 <img id="myimage"
@@ -169,11 +169,11 @@ include "header.php";
                                 <p style=" font-weight: 500;">Description</p>
                                 <input type="text" name="desc" id="desc" class="form-control" required>
                             </div>
-                            <div class="form-group">
+                            <!-- <div class="form-group">
                                 <p style=" font-weight: 500;">price</p>
                                 <input type="number" name="price" id="price" placeholder="name" class="form-control"
                                     required>
-                            </div>
+                            </div> -->
                             <figure>
                                 <img id="myimages" name="myimages"
                                     style="width:auto; display: block;position:relative; max-width: 50%;margin:auto; object-fit:cover;object-position: top;">
