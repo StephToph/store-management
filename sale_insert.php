@@ -12,18 +12,18 @@ if (isset($_POST['pname'])) {
     $sale = $_POST['sale'];
 
 
-    if ($vary == 'bag') {
+    // if ($vary == 'bag') {
 
-        $actq = $quantity * 10;
-    }
-    if ($vary == "bundle") {
-        $actq = $quantity * 1;
+    //     $actq = $quantity * 10;
+    // }
+    // if ($vary == "bundle") {
+    //     $actq = $quantity * 1;
 
-    }
-    if ($vary == "piece") {
-        $actq = $quantity / 10;
+    // }
+    // if ($vary == "piece") {
+    //     $actq = $quantity / 10;
 
-    }
+    // }
     if ($nameSend != '') {
         $sqli = "SELECT * FROM product where id ='$nameSend' ";
 
@@ -44,6 +44,7 @@ if (isset($_POST['pname'])) {
                 $will = "SELECT * FROM setting where product_id ='$pars' ";
                 $sql = mysqli_query($conn, $will);
                 $row = mysqli_fetch_assoc($sql);
+                $actq = $quantity;
                 if ($vary == 'bag') {
                     $actq = $quantity * $row['bundle'];
                 }
@@ -67,7 +68,7 @@ if (isset($_POST['pname'])) {
                     } else {
                         $qunl = $pared - $actq;
                         $add = "0";
-                        $sql2 = "UPDATE  inventory set quantity_left ='$qunl', quantity_add ='$add', current_quantity='$qunl' WHERE current_quantity='$pared'";
+                        $sql2 = "UPDATE  inventory set quantity_left ='$qunl', quantity_add ='$add', current_quantity='$qunl' WHERE product_id='$pars'";
                         $run = mysqli_query($conn, $sql2);
                         if ($run == true) {
                             $sql = " INSERT INTO sales (sale_id,product_id,prices,quantity,total_price,reg_date) values ('$sale','$pars', '$price', '$actq', '$tprice','$date')";

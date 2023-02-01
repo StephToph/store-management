@@ -68,7 +68,7 @@ while ($row = mysqli_fetch_assoc($run_result)) {
             if ($qun >= 10) {
                 $bill = $qun / $dis;
                 $sa = (int) $bill;
-                $esd = $tam - $sa;
+                $esd = $bill - $sa;
                 $end = $esd * 10;
                 $sun = $sa . ' bag';
                 if ($end > 0) {
