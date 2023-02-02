@@ -22,7 +22,7 @@ if (isset($_POST['order'])) {
     $order = $_POST['order'][0]['dir'];
     $query .= " ORDER BY " . $column_order[$_POST['order'][0]['column']] . ' ' . $order;
 } else {
-    $query .= " ORDER BY id asc ";
+    $query .= " ORDER BY id desc ";
 }
 if ($_POST['length'] != -1) {
     $start = $_POST['start'];
@@ -39,7 +39,7 @@ while ($row = mysqli_fetch_assoc($run_result)) {
     $sub_data = array();
 
     if ($row['image'] != "") {
-        $image = '<img src="' . $row['image'] . '" class="img-fluid rounded"  style=" width:100%;max-height:13vh;  object-fit:cover;object-position: top;" />';
+        $image = '<img src="' . $row['image'] . '" class="img-fluid rounded"  style=" width:100%;height:13vh;  object-fit:cover;object-position: top;" />';
     } else {
         $image = '';
     }

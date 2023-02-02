@@ -25,7 +25,7 @@ if (isset($_POST['order'])) {
     $order = $_POST['order'][0]['dir'];
     $query .= " ORDER BY " . $column_order[$_POST['order'][0]['column']] . ' ' . $order;
 } else {
-    $query .= " ORDER BY id asc ";
+    $query .= " ORDER BY reg_date desc ";
 }
 if ($_POST['length'] != -1) {
     $start = $_POST['start'];
@@ -84,15 +84,7 @@ while ($row = mysqli_fetch_assoc($run_result)) {
         }
         $sae = $sun;
     }
-    $sub_data[] = $sae;
-
-    // if () {
-    //     $sun = ($qun / $div) . 'bag';
-    // }
-    // if () {
-    //     $sun = ($qun) . 'bundle';
-    // }
-
+    $sub_data[] = $sae;   
     $sub_data[] = '	&#8358;' . number_format($row['total_price'], 2);
     $sub_data[] = $row['reg_date'];
     $data[] = $sub_data;

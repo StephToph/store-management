@@ -61,7 +61,7 @@ include "header.php";
                         <form enctype="multipart/form-data" id="myform">
 
                             <div class="form-group">
-                                <p style=" font-weight: 500;">Product_Name:</p>
+                                <p style=" font-weight: 500;">Product Name:</p>
                                 <input type="text" name="pnames" id="name" placeholder="name" class="form-control"
                                     required>
                             </div>
@@ -102,8 +102,7 @@ include "header.php";
                             </div>
                             <div class="form-group">
                                 <p style=" font-weight: 500;">Description</p>
-                                <input type="text" name="descs" id="desc" placeholder="name" class="form-control"
-                                    required>
+                                <input type="text" name="descs" id="desc" placeholder="name" class="form-control">
                             </div>
                             <!-- <div class="form-group">
                                 <p style=" font-weight: 500;">price</p>
@@ -124,11 +123,14 @@ include "header.php";
                                 <input type="file" class="btn btn-secondary" name="image" 
                                     required> -->
                             </div>
+                           <br>
+                           <br>
                             <button type="submit" class="btn btn-primary btn-tone  btn-block">ADD</button>
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default btn-tone  m-r-10" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-default btn-tone  m-r-10"
+                            data-dismiss="modal">Close</button>
                     </div>
                 </div>
             </div>
@@ -149,7 +151,7 @@ include "header.php";
                         <form enctype="multipart/form-data" id="myforms">
 
                             <div class="form-group">
-                                <p style=" font-weight: 500;">Product_Name:</p>
+                                <p style=" font-weight: 500;">Product Name:</p>
                                 <input type="text" name="pname" id="name" placeholder="name" class="form-control"
                                     required>
                                 <input type="hidden" id="id" name="pid" value="">
@@ -167,7 +169,7 @@ include "header.php";
                             </div>
                             <div class="form-group">
                                 <p style=" font-weight: 500;">Description</p>
-                                <input type="text" name="desc" id="desc" class="form-control" required>
+                                <input type="text" name="desc" id="desc" class="form-control">
                             </div>
                             <!-- <div class="form-group">
                                 <p style=" font-weight: 500;">price</p>
@@ -187,13 +189,15 @@ include "header.php";
                                 <input type="file" class="btn btn-secondary" name="image" 
                                     required> -->
                             </div>
-
+                            <br>
+                           <br>
                             <button type="submit" class="btn btn-primary btn-tone  btn-block">update</button>
 
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default btn-tone m-r-10" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-default btn-tone m-r-10"
+                            data-dismiss="modal">Close</button>
 
                     </div>
                 </div>
@@ -277,7 +281,7 @@ include "header.php";
                     }
                     ,
                     "columnDefs": [{
-                        "targets": [0, 2,5],//not sort
+                        "targets": [0, 2, 5],//not sort
                         "orderable": false
                     }]
                 })

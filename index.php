@@ -101,7 +101,7 @@ if (isset($_POST['submit'])) {
                                         <div class="d-flex align-items-center justify-content-between">
                                             <span class="font-size-13 text-muted">
                                                 Don't have an account?
-                                                <a class="small" href=""> Signup</a>
+                                                <a class="small" href="signup.php"> Signup</a>
                                             </span>
                                             <button class="btn btn-primary" name="submit">Sign In</button>
                                         </div>

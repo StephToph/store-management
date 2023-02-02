@@ -12,8 +12,7 @@ if (isset($_POST['pname'])) {
 
             $nameSend = $_POST['pname'];
             $cateSend = $_POST['pcate'];
-            $descSend = $_POST['desc'];
-            $price = $_POST['price'];
+            $descSend = $_POST['desc'];            
             $band = $_POST['yes'];
             // $imageSend = $_FILES['image'];
 

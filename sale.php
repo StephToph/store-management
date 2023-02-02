@@ -64,8 +64,8 @@ include "header.php";
                             </div>
 
                             <div class="form-group">
-                                <p style=" font-weight: 500;">Product_Name:</p>
-                                <select id="pname" name="pname" onchange="tesy();" onclick="bate()" class=" select2"
+                                <p style=" font-weight: 500;">Product Name:</p>
+                                <select id="pname" name="pname"  onclick="bate()" class=" select2"
                                     required>
                                     <?php
                                     $sql = "SELECT * FROM product";
@@ -84,7 +84,7 @@ include "header.php";
                             </div>
                             <div class="  m-b-15">
                                 <p style=" font-weight: 500;">Category Name:</p>
-                                <select class="select2" id="cate" name="pcates" onclick="bate()" onchange="tesy();">
+                                <select class="select2" id="cate" name="pcates" onclick="bate()" >
                                     <?php
                                     $sql = "SELECT * FROM category";
                                     echo "<option>select_category</option>";
@@ -152,7 +152,7 @@ include "header.php";
                                     placeholder="Quantity_sold" class="form-control" required>
                             </div>
                             <div class="form-group">
-                                <p style=" font-weight: 500;">Total_price</p>
+                                <p style=" font-weight: 500;">Total price</p>
                                 <input type="number" name="tprice" id="tprice" placeholder="total_price"
                                     class="form-control" required>
                             </div>
@@ -219,8 +219,6 @@ include "header.php";
                 var val = document.getElementById("pname").value;
                 var vals = document.getElementById("tat").value;
                 var dat = document.getElementById("mar").value;
-
-
                 $.ajax({
                     type: "GET",
                     url: "scate.php",
@@ -260,7 +258,7 @@ include "header.php";
                         method: "POST"
                     },
                     "fnCreate": function (nRow, aData, iDataIndex) {
-                        $(nRow).attr("sale_id", aData[0]);
+                        $(nRow).attr("reg_date", aData[0]);
                     }
                     ,
                     "columnDefs": [{
