@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Enlink - Admin Dashboard Template</title>
+    <title>testimony</title>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="assets/images/logo/favicon.png">
@@ -20,25 +20,31 @@
     <div class="app">
         <div class="container-fluid p-0 h-100">
             <div class="row no-gutters h-100 full-height">
-                <div class="col-lg-4 d-none d-lg-flex bg" style="background-image:url('assets/images/others/sign-up-1.jpg')">
+                <div class="col-lg-4 d-none d-lg-flex bg"
+                    style="background-image:url('assets/images/others/sign-up-1.jpg')">
                     <div class="d-flex h-100 p-h-40 p-v-15 flex-column justify-content-between">
                         <div>
-                            <img src="assets/images/logo/logo-white.png" alt="">
+                            <h1 class="text-white m-b-20 font-weight-normal">Testimony Poly</h1>
                         </div>
                         <div>
-                            <h1 class="text-white m-b-20 font-weight-normal">Exploring Enlink</h1>
-                            <p class="text-white font-size-16 lh-2 w-80 opacity-08">Climb leg rub face on everything give attitude nap all day for under the bed. Chase mice attack feet but rub face on everything hopped up.</p>
+                            <h1 class="text-white m-b-20 font-weight-normal">Exploring testimony</h1>
+                            <p class="text-white font-size-16 lh-2 w-80 opacity-08">Climb leg rub face on everything
+                                give attitude nap all day for under the bed. Chase mice attack feet but rub face on
+                                everything hopped up.</p>
                         </div>
                         <div class="d-flex justify-content-between">
-                            <span class="text-white">© 2019 ThemeNate</span>
-                            <ul class="list-inline">
+                            <span class="text-white">©
+                                <?php
+                                echo date('Y'); ?>
+                            </span>
+                            <!-- <ul class="list-inline">
                                 <li class="list-inline-item">
                                     <a class="text-white text-link" href="">Legal</a>
                                 </li>
                                 <li class="list-inline-item">
                                     <a class="text-white text-link" href="">Privacy</a>
                                 </li>
-                            </ul>
+                            </ul> -->
                         </div>
                     </div>
                 </div>
@@ -49,81 +55,111 @@
                                 <h2>Sign Up</h2>
                                 <p class="m-b-30">Create your account to get access</p>
                                 <form enctype="multipart/form-data" id="myform">
+                                    <div id="msg1"></div>
                                     <div class="form-group">
                                         <label class="font-weight-semibold" for="userName">Username:</label>
-                                        <input type="text" class="form-control" id="userName" placeholder="Username">
+                                        <input type="text" class="form-control" autocomplete="off" name="username"
+                                            id="userName" placeholder="Username">
                                     </div>
                                     <div class="form-group">
                                         <label class="font-weight-semibold" for="email">Email:</label>
-                                        <input type="email" class="form-control" id="email" placeholder="Email">
+                                        <input type="email" name="email" required class="form-control" id="email"
+                                            placeholder="Email">
                                     </div>
                                     <div class="form-group">
                                         <label class="font-weight-semibold" for="password">Password:</label>
-                                        <input type="password" class="form-control" id="password" placeholder="Password">
+                                        <input type="password" name="password" autocomplete="off" class="form-control"
+                                            id="password" placeholder="Password">
                                     </div>
                                     <div class="form-group">
-                                        <label class="font-weight-semibold" for="confirmPassword">Confirm Password:</label>
-                                        <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm Password">
+                                        <label class="font-weight-semibold" autocomplete="off"
+                                            for="confirmPassword">Confirm
+                                            Password:</label>
+                                        <input type="password" class="form-control" name='PasswordConfirm'
+                                            id="confirmPassword" placeholder="Confirm Password">
                                     </div>
                                     <div class="form-group">
                                         <div class="d-flex align-items-center justify-content-between p-t-15">
                                             <div class="checkbox">
                                                 <input id="checkbox" type="checkbox">
-                                                <label for="checkbox"><span>I have read the <a href="">agreement</a></span></label>
+                                                <label for="checkbox"><span>I have read the <a
+                                                            href="">agreement</a></span></label>
                                             </div>
                                             <button type="submit" class="btn btn-primary">Sign In</button>
                                         </div>
                                     </div>
                                 </form>
                             </div>
-                        </div>  
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    
+
     <!-- Core Vendors JS -->
     <script src="assets/js/vendors.min.js"></script>
+    <script src="assets/vendors/jquery-validation/jquery.validate.min.js"></script>
 
     <!-- page js -->
 
     <!-- Core JS -->
     <script src="assets/js/app.min.js"></script>
     <script>
-         $(document).ready(function () {
-                $('#myform').on('submit', function (event) {
-                    event.preventDefault();
-                    $.ajax({
-                        type: 'post',
-                        url: "create.php",
-                        data: new FormData(this),
-                        dataType: "json",
-                        contentType: false,
-                        processData: false,
-                        cache: false,
-                        success: function (data) {
-                            if (data == 'success') {
-                                $("#myform")[0].reset();
-                                $('#dtable').DataTable().ajax.reload();
-                                $('.modal').each(function () {
-                                    $(this).modal('hide');
-                                });
-                                $("#msg").html('<span class="alert alert-success">Inventory is Added Successfully</span><br><br>');
-                                setTimeout(function () {
-                                    $("#msg").html('');
-                                }, 5000);
-                            } else {
-                                $("#msg1").html('<span class="alert alert-warning alert-dismissible fade show">Inventory Already exist</span><br><br>');
-                                setTimeout(function () {
-                                    $("#msg1").html('');
-                                }, 5000);
-                            }
-                        }
-                    });
+        // $("#myform").validate({
+        //     ignore: ':hidden:not(:checkbox)',
+        //     errorElement: 'label',
+        //     errorClass: 'is-invalid',
+        //     validClass: 'is-valid',
+        //     rules: {
+        //         password: {
+        //             required: true
+        //         },
+        //         PasswordConfirm: {
+        //             required: true,
+        //             equalTo: '#password'
+        //         },
 
-                })
+        //     }
+        // });
+        $(document).ready(function () {
+            $('#myform').on('submit', function (event) {
+                event.preventDefault();
+                $.ajax({
+                    type: 'post',
+                    url: "create.php",
+                    data: new FormData(this),
+                    dataType: "json",
+                    contentType: false,
+                    processData: false,
+                    cache: false,
+                    success: function (data) {
+                        if (data == 'success') {
+                            $("#myform")[0].reset();
+                            window.location = "\index.php";
+                            setTimeout(function () {
+                                $("#msg").html('');
+                            }, 5000);
+                        } if (data == 'fails') {
+                            $("#msg1").html('<span class="alert alert-warning alert-dismissible fade show">email already exist </span><br><br>');
+                            setTimeout(function () {
+                                $("#msg1").html('');
+                            }, 5000);
+                        }
+                        if (data == 'failed') {
+                            $("#msg1").html('<span class="alert alert-warning alert-dismissible fade show">passord doesnt match confirm Password </span><br><br>');
+                            setTimeout(function () {
+                                $("#msg1").html('');
+                            }, 5000);
+                        }
+                        else {
+
+                        }
+                    }
+                });
+
             })
+        })
     </script>
 
 </body>

@@ -19,6 +19,7 @@ if (isset($_POST['submit'])) {
         $_SESSION['User_id'] = $row['id'];
         $_SESSION['Username'] = $row['firstname'];
         header("Location:home.php");
+        
     } else {
         header("Location:index.php?error=Incorrect details ");
 
@@ -79,7 +80,7 @@ if (isset($_POST['submit'])) {
                                         <?php echo $_GET['error'] ?>
                                     </div>
                                 <?php } ?>
-                                <form action="" method="post">
+                                <form action="" id="myform" method="post">
                                     <div class="form-group">
                                         <label class="font-weight-semibold" for="userName">Username:</label>
                                         <div class="input-affix">
@@ -129,6 +130,7 @@ if (isset($_POST['submit'])) {
         setTimeout(function () {
             $("#msg1").html('');
         }, 5000);
+     
     </script>
 
 

@@ -143,9 +143,9 @@ if (!isset($_SESSION['User_id'])) {
                                         <div class="avatar avatar-lg avatar-image">
                                             <img src="assets/images/avatars/thumb-3.jpg" alt="">
                                         </div>
-                                        <div class="m-l-10">
-                                            <p class="m-b-0 text-dark font-weight-semibold">Marshall Nichols</p>
-                                            <p class="m-b-0 opacity-07">UI/UX Desinger</p>
+                                        <div class="m-l-10">                                          
+                                        <p class="m-b-0 text-dark font-weight-semibold"><?php echo $_SESSION['Username']?></p>                                            
+                                                                                         
                                         </div>
                                     </div>
                                 </div>
