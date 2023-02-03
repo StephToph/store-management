@@ -46,7 +46,7 @@ $output = array(
     "draw" => intval($_POST["draw"]),
     "recordsTotal" => $count_all_rows,
     "recordsFiltered" => $count_all_rows,
-    "data" => $data
+    "data" => $data,
 
 );
 echo json_encode($output);
