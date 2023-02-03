@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 01, 2023 at 10:29 AM
+-- Generation Time: Feb 03, 2023 at 11:34 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -60,11 +60,7 @@ CREATE TABLE `category` (
 
 INSERT INTO `category` (`id`, `name`) VALUES
 (19, 'cutting'),
-(20, 'roll'),
-(21, 'small'),
-(22, 'big'),
-(23, 'sam'),
-(24, 'as');
+(20, 'roll');
 
 -- --------------------------------------------------------
 
@@ -78,7 +74,7 @@ CREATE TABLE `inventory` (
   `quantity_left` double NOT NULL,
   `quantity_add` double NOT NULL,
   `current_quantity` double NOT NULL,
-  `date` date NOT NULL,
+  `date` datetime NOT NULL,
   `brand_id` int(11) NOT NULL DEFAULT 0,
   `cat_id` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -88,10 +84,12 @@ CREATE TABLE `inventory` (
 --
 
 INSERT INTO `inventory` (`id`, `product_id`, `quantity_left`, `quantity_add`, `current_quantity`, `date`, `brand_id`, `cat_id`) VALUES
-(1, 77, 1, 0, 1, '2023-01-21', 16, 0),
-(10, 75, 38.8, 10, 408, '2023-01-30', 12, 0),
-(11, 79, 0, 6.9, 6.9, '2023-01-30', 14, 20),
-(12, 77, 16, 0, 16, '2023-01-31', 16, 0);
+(1, 77, 38, 0, 1, '2023-01-21 00:00:00', 16, 0),
+(10, 75, 408, 0, 408, '2023-01-30 00:00:00', 12, 0),
+(12, 77, 38, 0, 0, '2023-01-31 00:00:00', 16, 0),
+(13, 79, 25.7, 0, 25.7, '2023-02-01 00:00:00', 14, 20),
+(14, 77, 9, 0, 9, '2023-02-01 00:00:00', 16, 0),
+(15, 71, 0, 56, 56, '2023-02-02 00:00:00', 12, 0);
 
 -- --------------------------------------------------------
 
@@ -119,12 +117,10 @@ INSERT INTO `product` (`id`, `cat_name`, `name`, `description`, `image`, `Reg_da
 (73, 0, 'medium', 'form ikordu', 'upload/63c7f5098a79b9.77647437.jpg', '2023-01-18 14:32:57', 15),
 (74, 0, 'blue/black ', 'wfyjn', 'upload/63c965e69b3b14.56758241.jpg', '2023-01-19 16:46:46', 12),
 (75, 0, 'orebe', 'jsjkjsk', 'upload/63c966cdef4685.09848641.jpg', '2023-01-19 16:50:37', 12),
-(76, 0, 'polybag', 'sawdd', 'upload/63c9676e4b2f07.66377085.jpg', '2023-01-19 16:53:18', 12),
 (77, 0, 'orebe', 'qweww', 'upload/63c968e575b568.07273199.jpg', '2023-01-19 16:59:33', 16),
 (78, 0, 'medium', 'erer567', 'upload/63c969698b8f15.70847681.jpg', '2023-01-19 17:01:45', 16),
 (79, 20, 'santana', 'w6reyuknr', 'upload/63c9719600b3e5.99185830.jpg', '2023-01-19 17:36:37', 14),
-(81, 22, 'polybag', 'rrrdddd', 'upload/63c9b7ac0ff398.84752941.jpg', '2023-01-19 22:35:40', 12),
-(82, 0, 'orebe', 'rrr', 'upload/63cb184c8edd08.52900577.jpg', '2023-01-20 23:40:12', 0);
+(81, 22, 'polybag', 'rrrdddd', 'upload/63c9b7ac0ff398.84752941.jpg', '2023-01-19 22:35:40', 12);
 
 -- --------------------------------------------------------
 
@@ -139,7 +135,7 @@ CREATE TABLE `sales` (
   `prices` double NOT NULL,
   `quantity` double NOT NULL,
   `total_price` double NOT NULL,
-  `reg_date` date NOT NULL
+  `reg_date` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -147,12 +143,16 @@ CREATE TABLE `sales` (
 --
 
 INSERT INTO `sales` (`id`, `sale_id`, `product_id`, `prices`, `quantity`, `total_price`, `reg_date`) VALUES
-(30, 817827, 75, 1800, 0, 7200, '2023-01-30'),
-(31, 946145, 75, 1800, 0, 9000, '2023-01-30'),
-(32, 120704, 79, 1800, 0, 3600, '2023-01-30'),
-(33, 452527, 77, 1400, 2, 2800, '2023-01-31'),
-(34, 226354, 77, 1400, 2, 2800, '2023-01-31'),
-(35, 220094, 77, 1400, 2, 2800, '2023-01-31');
+(33, 452527, 77, 1400, 2, 2800, '2023-01-31 00:00:00'),
+(38, 823589, 79, 1800, 2, 3600, '2023-02-01 00:00:00'),
+(41, 579804, 77, 1400, 2, 2800, '2023-02-01 00:00:00'),
+(42, 814459, 77, 14000, 10, 14000, '2023-02-01 00:00:00'),
+(43, 633140, 77, 1400, 2, 2800, '2023-02-01 00:00:00'),
+(44, 946680, 77, 1400, 3, 4200, '2023-02-01 00:00:00'),
+(45, 227776, 79, 1800, 3, 5400, '2023-02-01 00:00:00'),
+(46, 685066, 79, 1800, 2.3, 4140, '2023-02-01 00:00:00'),
+(47, 442276, 77, 1400, 22, 30800, '2023-02-01 00:00:00'),
+(48, 833681, 77, 1400, 4, 5600, '2023-02-01 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -174,7 +174,8 @@ CREATE TABLE `setting` (
 INSERT INTO `setting` (`id`, `product_id`, `bundle`, `piece`) VALUES
 (1, 72, 10, 10),
 (2, 75, 10, 10),
-(3, 77, 10, 10);
+(3, 77, 10, 10),
+(4, 71, 10, 10);
 
 -- --------------------------------------------------------
 
@@ -185,16 +186,17 @@ INSERT INTO `setting` (`id`, `product_id`, `bundle`, `piece`) VALUES
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `firstname` varchar(250) NOT NULL,
-  `password` varchar(50) NOT NULL
+  `password` varchar(50) NOT NULL,
+  `email` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `firstname`, `password`) VALUES
-(3, 'owolabi', '827ccb0eea8a706c4c34a16891f84e7b'),
-(5, 'daystar', 'e034fb6b66aacc1d48f445ddfb08da98');
+INSERT INTO `users` (`id`, `firstname`, `password`, `email`) VALUES
+(10, 'owolabi', '81dc9bdb52d04dc20036dbd8313ed055', 'daystarowolabi@gmail.com'),
+(15, 'daystar', '81dc9bdb52d04dc20036dbd8313ed055', 'das@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -214,10 +216,10 @@ CREATE TABLE `variation` (
 --
 
 INSERT INTO `variation` (`id`, `product_id`, `quantity`, `price`) VALUES
-(1, 71, 'bundles', 1400),
+(1, 71, 'bundle', 1400),
 (3, 77, 'bundle', 1400),
 (4, 77, 'bag', 14000),
-(5, 79, '1kg', 1800),
+(5, 79, 'kg', 1800),
 (6, 75, ' bundle', 1800);
 
 --
@@ -281,43 +283,43 @@ ALTER TABLE `variation`
 -- AUTO_INCREMENT for table `brand`
 --
 ALTER TABLE `brand`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `inventory`
 --
 ALTER TABLE `inventory`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
 
 --
 -- AUTO_INCREMENT for table `sales`
 --
 ALTER TABLE `sales`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT for table `setting`
 --
 ALTER TABLE `setting`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `variation`
