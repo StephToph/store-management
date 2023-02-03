@@ -52,8 +52,8 @@
                     <div class="container h-100">
                         <div class="row no-gutters h-100 align-items-center">
                             <div class="col-md-8 col-lg-7 col-xl-6 mx-auto">
-                                <h2>Sign Up</h2>
-                                <p class="m-b-30">Create your account to get access</p>
+                                <h2>forget password</h2>
+                                <p class="m-b-30">please input neccesary details</p>
                                 <form enctype="multipart/form-data" id="myform">
                                     <div id="msg1"></div>
                                     <div class="form-group">
@@ -66,26 +66,29 @@
                                         <input type="email" name="email" required class="form-control" id="email"
                                             placeholder="Email">
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group" style="display: none;">
                                         <label class="font-weight-semibold" for="password">Password:</label>
-                                        <input type="password" name="password" autocomplete="off" class="form-control"
-                                            id="password" placeholder="Password">
+                                        <input type="password" disabled name="password" autocomplete="off"
+                                            class="form-control" id="password" placeholder="Password">
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group" style="display: none;">
                                         <label class="font-weight-semibold" autocomplete="off"
                                             for="confirmPassword">Confirm
                                             Password:</label>
-                                        <input type="password" class="form-control" name='PasswordConfirm'
+                                        <input type="password" disabled class="form-control" name='PasswordConfirm'
                                             id="confirmPassword" placeholder="Confirm Password">
                                     </div>
                                     <div class="form-group">
                                         <div class="d-flex align-items-center justify-content-between p-t-15">
                                             <div class="checkbox">
-                                                <input id="checkbox" type="checkbox">
-                                                <label for="checkbox"><span>I have read the <a
-                                                            href="">agreement</a></span></label>
+                                                <button id="trigger-loading" class="btn btn-primary m-r-5">
+                                                    <i class="anticon anticon-loading m-r-5"></i>
+                                                    <i class="anticon anticon-poweroff m-r-5"></i>
+                                                    <span>check account</span>
+                                                </button>
                                             </div>
-                                            <button type="submit" class="btn btn-primary">Sign In</button>
+                                            <button type="submit" style="display: none;" id="ban" class="btn btn-primary">Sign
+                                                In</button>
                                         </div>
                                     </div>
                                 </form>
@@ -106,28 +109,56 @@
     <!-- Core JS -->
     <script src="assets/js/app.min.js"></script>
     <script>
-        // $("#myform").validate({
-        //     ignore: ':hidden:not(:checkbox)',
-        //     errorElement: 'label',
-        //     errorClass: 'is-invalid',
-        //     validClass: 'is-valid',
-        //     rules: {
-        //         password: {
-        //             required: true
-        //         },
-        //         PasswordConfirm: {
-        //             required: true,
-        //             equalTo: '#password'
-        //         },
+        $('#trigger-loading').on('click', function () {
 
-        //     }
-        // });
-        $(document).ready(function () {
+            $(this).addClass("is-loading");
+
             $('#myform').on('submit', function (event) {
                 event.preventDefault();
                 $.ajax({
                     type: 'post',
-                    url: "create.php",
+                    url: "see.php",
+                    data: new FormData(this),
+                    dataType: "json",
+                    contentType: false,
+                    processData: false,
+                    cache: false,
+                    success: function (data) {
+                        if (data == 'pass') {
+                            // $("#myform")[0].reset();                            
+                            setTimeout(function () { $("#trigger-loading").removeClass("is-loading"); }, 100);
+
+                            $('.form-group').show(); 
+                            $('#confirmPassword').attr("disabled",false);
+                            $('#password').attr("disabled",false);
+                            $('#ban').show();
+                            $('#trigger-loading').hide(); 
+                        } if (data == 'fails') {
+                            $("#msg1").html('<span class="alert alert-warning alert-dismissible fade show">email already exist </span><br><br>');
+                            setTimeout(function () {
+                                $("#msg1").html('');
+                            }, 5000);
+                        }
+                        if (data == 'failed') {
+                            $("#msg1").html('<span class="alert alert-warning alert-dismissible fade show">passord doesnt match confirm Password </span><br><br>');
+                            setTimeout(function () {
+                                $("#msg1").html('');
+                            }, 5000);
+                        }
+                        else {
+
+                        }
+                    }
+                });
+
+            })
+        });
+        $('#ban').on('click', function () {
+            $('#myform').on('submit', function (event) {
+                event.preventDefault();
+                $.ajax({
+                    type: 'post',
+                    url: "dad.php",
                     data: new FormData(this),
                     dataType: "json",
                     contentType: false,
@@ -135,7 +166,7 @@
                     cache: false,
                     success: function (data) {
                         if (data == 'success') {
-                            $("#myform")[0].reset();
+                            // $("#myform")[0].reset();
                             window.location = "\index.php";
                             setTimeout(function () {
                                 $("#msg").html('');

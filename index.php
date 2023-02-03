@@ -18,8 +18,7 @@ if (isset($_POST['submit'])) {
         $row = mysqli_fetch_assoc($result);
         $_SESSION['User_id'] = $row['id'];
         $_SESSION['Username'] = $row['firstname'];
-        header("Location:home.php");
-        
+        header("Location:home.php");        
     } else {
         header("Location:index.php?error=Incorrect details ");
 
@@ -44,7 +43,7 @@ if (isset($_POST['submit'])) {
 
 </head>
 
-<body>
+<body  class="text-capitalize font-weight-semibold">
     <div class="app">
         <div class="container-fluid p-0 h-100">
             <div class="row no-gutters h-100 full-height">
@@ -91,7 +90,7 @@ if (isset($_POST['submit'])) {
                                     </div>
                                     <div class="form-group">
                                         <label class="font-weight-semibold" for="password">Password:</label>
-                                        <a class="float-right font-size-13 text-muted" href="">Forget Password?</a>
+                                        <a class="float-right font-size-13 text-muted" href="foret.php">Forget Password?</a>
                                         <div class="input-affix m-b-10">
                                             <i class="prefix-icon anticon anticon-lock"></i>
                                             <input type="password" name="password" class="form-control" id="password"

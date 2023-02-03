@@ -22,9 +22,6 @@ if (isset($_POST['nameSend'])) {
 
     }
 
-
-
-
     echo json_encode($output);
 
 }

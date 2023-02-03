@@ -23,7 +23,7 @@ if (isset($_POST['order'])) {
     $order = $_POST['order'][0]['dir'];
     $query .= " ORDER BY " . $column_order[$_POST['order'][0]['column']] . ' ' . $order;
 } else {
-    $query .= " ORDER BY id asc ";
+    $query .= " ORDER BY id desc ";
 }
 if ($_POST['length'] != -1) {
     $start = $_POST['start'];

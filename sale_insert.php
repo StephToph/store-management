@@ -12,18 +12,7 @@ if (isset($_POST['pname'])) {
     $sale = $_POST['sale'];
 
 
-    // if ($vary == 'bag') {
-
-    //     $actq = $quantity * 10;
-    // }
-    // if ($vary == "bundle") {
-    //     $actq = $quantity * 1;
-
-    // }
-    // if ($vary == "piece") {
-    //     $actq = $quantity / 10;
-
-    // }
+    
     if ($nameSend != '') {
         $sqli = "SELECT * FROM product where id ='$nameSend' ";
 
