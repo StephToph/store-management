@@ -125,7 +125,7 @@
                     cache: false,
                     success: function (data) {
                         if (data == 'pass') {
-                            // $("#myform")[0].reset();                            
+                            $("#myform")[0].reset();                            
                             setTimeout(function () { $("#trigger-loading").removeClass("is-loading"); }, 100);
 
                             $('.form-group').show(); 
@@ -133,8 +133,9 @@
                             $('#password').attr("disabled",false);
                             $('#ban').show();
                             $('#trigger-loading').hide(); 
-                        } if (data == 'fails') {
-                            $("#msg1").html('<span class="alert alert-warning alert-dismissible fade show">email already exist </span><br><br>');
+                        } if (data == 'fail') {
+                            setTimeout(function () { $("#trigger-loading").removeClass("is-loading"); }, 100);
+                            $("#msg1").html('<span class="alert alert-warning alert-dismissible fade show">account doesnt exist </span><br><br>');
                             setTimeout(function () {
                                 $("#msg1").html('');
                             }, 5000);
