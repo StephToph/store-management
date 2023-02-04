@@ -139,13 +139,7 @@
                             setTimeout(function () {
                                 $("#msg1").html('');
                             }, 5000);
-                        }
-                        if (data == 'failed') {
-                            $("#msg1").html('<span class="alert alert-warning alert-dismissible fade show">passord doesnt match confirm Password </span><br><br>');
-                            setTimeout(function () {
-                                $("#msg1").html('');
-                            }, 5000);
-                        }
+                        }                       
                         else {
 
                         }
